@@ -1,0 +1,18 @@
+{
+  "@context": [
+    "https://schema.org",
+    "https://www.w3.org/2018/credentials/v1"
+  ],
+  "id": "https://identity.nvo987.us/verification",
+  "type": "Service",
+  "name": "NVO987 Verification Service",
+  "provider": {
+    "id": "https://identity.nvo987.us/profile/brand"
+  },
+  "identifier": "did:web:identity.nvo987.us",
+  "serviceType": "VerificationService",
+  "hasPart": [
+    "https://identity.nvo987.us/verification/credentials.jsonld",
+    "https://identity.nvo987.us/verification/signatures.jsonld"
+  ]
+}
