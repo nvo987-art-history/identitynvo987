@@ -1,4 +1,8 @@
-# NVO987
-# No advertising networks are used on this domain.
+# ads.txt for identity.nvo987.us
+# Owner: Nicholas Van-Orton
+# Brand: NVO987
 
-contact=nvo@nvo987.us 
+# This domain does not currently authorize any advertising networks.
+
+# Contact
+mailto:nvo@nvo987.us 
