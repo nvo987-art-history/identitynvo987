@@ -1,0 +1,11 @@
+{
+  "@context": "https://identity.foundation/.well-known/did-configuration/v1",
+  "linked_dids": [
+    {
+      "did": "did:web:identity.nvo987.us",
+      "domain": "identity.nvo987.us",
+      "controller": "Nicholas Van-Orton",
+      "brand": "NVO987"
+    }
+  ]
+}
