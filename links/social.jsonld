@@ -4,9 +4,10 @@
   "type": "Person",
   "name": "Nicholas Van-Orton",
   "identifier": "did:web:identity.nvo987.us",
+  "brand": "NVO987",
   "sameAs": [
     "https://mastodon.social/@nvo987",
-		"https://nvo987.substack.com"
-    "https://bsky.app/profile/nvo987.us"
+    "https://bsky.app/profile/nvo987.us",
+    "https://nvo987.substack.com"
   ]
-}
+} 
