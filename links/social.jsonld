@@ -4,7 +4,18 @@
   "type": "Person",
   "name": "Nicholas Van-Orton",
   "identifier": "did:web:identity.nvo987.us",
-  "brand": "NVO987",
+  "url": "https://identity.nvo987.us",
+  "publisher": {
+    "type": "Brand",
+    "name": "NVO987",
+    "url": "https://nvo987.us"
+  },
+  "knowsAbout": [
+    "Art History",
+    "Digital Humanities",
+    "Knowledge Graphs",
+    "Decentralized Identity"
+  ],
   "sameAs": [
     "https://mastodon.social/@nvo987",
     "https://bsky.app/profile/nvo987.us",
