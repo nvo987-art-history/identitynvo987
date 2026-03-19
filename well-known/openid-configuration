@@ -1,0 +1,21 @@
+{
+  "issuer": "https://identity.nvo987.us",
+  "subject_types_supported": [
+    "public"
+  ],
+  "id_token_signing_alg_values_supported": [
+    "EdDSA"
+  ],
+  "scopes_supported": [
+    "openid",
+    "profile",
+    "did"
+  ],
+  "claims_supported": [
+    "sub",
+    "did",
+    "name",
+    "brand"
+  ],
+  "service_documentation": "https://identity.nvo987.us"
+}
