@@ -1,0 +1,9 @@
+{
+  "id": "did:web:identity.nvo987.us",
+  "type": "AutonomousAgent",
+  "name": "NVO987 Identity Agent",
+  "owner": "Nicholas Van-Orton",
+  "brand": "NVO987",
+  "endpoint": "https://identity.nvo987.us/api",
+  "knowledge_graph": "https://identity.nvo987.us/machine/graph.jsonld"
+}
