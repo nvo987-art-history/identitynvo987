@@ -1,0 +1,12 @@
+{
+  "@context": "https://schema.org",
+  "id": "https://identity.nvo987.us/links/social",
+  "type": "Person",
+  "name": "Nicholas Van-Orton",
+  "identifier": "did:web:identity.nvo987.us",
+  "sameAs": [
+    "https://mastodon.social/@nvo987",
+		"https://nvo987.substack.com"
+    "https://bsky.app/profile/nvo987.us"
+  ]
+}
