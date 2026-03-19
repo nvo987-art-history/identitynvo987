@@ -1,0 +1,7 @@
+{
+  "@context": "https://www.w3.org/2018/credentials/v1",
+  "id": "https://identity.nvo987.us/machine/vc",
+  "type": "VerifiableCredentialService",
+  "controller": "did:web:identity.nvo987.us",
+  "issuer": "did:web:identity.nvo987.us"
+}
