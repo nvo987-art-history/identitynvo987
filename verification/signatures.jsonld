@@ -1,0 +1,7 @@
+{
+  "@context": "https://w3id.org/security/v2",
+  "id": "https://identity.nvo987.us/verification/signatures",
+  "type": "SignatureVerificationService",
+  "controller": "did:web:identity.nvo987.us",
+  "description": "Verification endpoint for cryptographic signatures associated with the NVO987 identity."
+}
