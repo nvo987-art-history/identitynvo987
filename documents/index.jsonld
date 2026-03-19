@@ -1,0 +1,16 @@
+{
+  "@context": [
+    "https://schema.org",
+    "https://www.w3.org/ns/did/v1"
+  ],
+  "id": "https://identity.nvo987.us/documents",
+  "type": "Collection",
+  "name": "NVO987 Document Repository",
+  "creator": "https://identity.nvo987.us/profile/person",
+  "publisher": "https://identity.nvo987.us/profile/brand",
+  "identifier": "did:web:identity.nvo987.us",
+  "hasPart": [
+    "https://identity.nvo987.us/documents/publications.jsonld",
+    "https://identity.nvo987.us/documents/resources.jsonld"
+  ]
+}
