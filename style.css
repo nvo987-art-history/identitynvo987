@@ -1,0 +1,237 @@
+/* =========================
+   RESET
+========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =========================
+   BODY
+========================= */
+
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: #6b3f2a;
+  color: #ffffff;
+  line-height: 1.6;
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================
+   HERO / BANNER
+========================= */
+
+.hero {
+  min-height: 40vh;
+  max-height: 420px;
+
+  background-image: url("banner.jpg");
+  background-size: cover;
+  background-position: center 35%;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-overlay {
+  background: rgba(0, 0, 0, 0.45);
+  padding: 22px 32px;
+  border-radius: 14px;
+}
+
+.hero h1 {
+  font-size: 2.4rem;
+  margin-bottom: 6px;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  opacity: 0.95;
+}
+
+/* =========================
+   MAIN MENU
+========================= */
+
+.main-menu {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+
+  padding: 14px 0;
+
+  background: rgba(0,0,0,0.25);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.main-menu a {
+  color: #ffe6d5;
+  text-decoration: none;
+
+  font-weight: 500;
+  letter-spacing: 0.4px;
+
+  padding: 6px 12px;
+  border-radius: 6px;
+
+  transition: all 0.15s ease;
+}
+
+.main-menu a:hover {
+  background: rgba(255,255,255,0.08);
+  color: #ffffff;
+}
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+main {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 28px 22px 24px;
+  flex: 1;
+}
+
+main section:first-child {
+  margin-top: 0;
+}
+
+/* =========================
+   SECTIONS (CARD STYLE)
+========================= */
+
+section {
+  margin-bottom: 52px;
+  padding: 26px 28px;
+
+  background: rgba(255,255,255,0.06);
+  border-radius: 14px;
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  /* ARANY CSÍK */
+  border-left: 4px solid #d4af37;
+
+  box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+
+  backdrop-filter: blur(2px);
+}
+
+/* =========================
+   TEXT
+========================= */
+
+p {
+  line-height: 1.6;
+  margin-bottom: 1.15em;
+}
+
+section p:last-child {
+  margin-bottom: 0;
+}
+
+/* =========================
+   HEADINGS
+========================= */
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 18px;
+}
+
+h2 {
+  font-size: 1.65rem;
+  margin-bottom: 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding-bottom: 6px;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin-top: 1.6em;
+  margin-bottom: 0.6em;
+}
+
+/* =========================
+   LISTS
+========================= */
+
+ul {
+  list-style: none;
+}
+
+li {
+  margin: 12px 0;
+}
+
+/* =========================
+   LINKS
+========================= */
+
+a {
+  color: #ffe6d5;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+  .hero {
+    min-height: 260px;
+    background-position: center 30%;
+  }
+
+  .hero h1 {
+    font-size: 1.7rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .main-menu {
+    gap: 18px;
+    font-size: 0.95rem;
+  }
+
+  main {
+    padding: 24px 18px 24px;
+  }
+
+  section {
+    padding: 22px 20px;
+  }
+
+  p {
+    line-height: 1.55;
+  }
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+  text-align: center;
+  margin-top: 1.5rem;
+  opacity: 0.85;
+  font-size: 0.95rem;
+     }

@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SPZS0FSKW3"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-SPZS0FSKW3');
+</script>
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>NVO987 | Identity Node | Nicholas Van-Orton</title>
+
+<meta name="description" content="Identity root node for decentralized identifier did:web:identity.nvo987.us and associated research infrastructure">
+<meta name="keywords" content="decentralized identity, DID, did:web, identity node, cryptographic identity, research infrastructure, knowledge network, knowledge graph, decentralized web, identity verification, NVO987">
+<meta name="author" content="nvo987">
+
+<meta name="robots" content="index, follow">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+
+<meta name="theme-color" content="#6b3f2a">
+<meta name="color-scheme" content="light dark">
+
+<link rel="canonical" href="https://identity.nvo987.us/">
+
+<link rel="stylesheet" href="style.css">
+
+<!-- FAVICON COMPLETE SET -->
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+<link rel="icon" type="image/png" sizes="64x64" href="/favicon-64x64.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="128x128" href="/favicon-128x128.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
+<link rel="icon" type="image/png" sizes="256x256" href="/favicon-256x256.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png">
+
+<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+
+<meta name="msapplication-TileColor" content="#6b3f2a">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+
+<!-- WEB APP -->
+
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#6b3f2a">
+
+<!-- MICROSOFT TILE -->
+
+<meta name="msapplication-config" content="/browserconfig.xml">
+<meta name="msapplication-TileColor" content="#6b3f2a"> 
+
+<!-- ADDITIONAL WEB IDENTITY FILES -->
+
+<link rel="author" href="/humans.txt">
+<link rel="alternate" type="application/xml" title="Sitemap" href="/sitemap.xml">
+<link rel="manifest" href="/webmanifest.json">
+<link rel="security" href="https://identity.nvo987.us/.well-known/security.txt">
+
+<!-- RSS -->
+
+<link rel="alternate"
+      type="application/rss+xml"
+      title="NVO987 Research Feed"
+      href="https://nvo987.substack.com/feed">
+  
+<!-- DID DISCOVERY -->
+
+<link rel="self" type="application/did+json" href="https://identity.nvo987.us/.well-known/did.json">
+<link rel="alternate" type="application/json" href="/.well-known/did.json">
+
+<!-- IDENTITY SERVICES -->
+
+<link rel="profile" href="https://identity.nvo987.us/profile">
+<link rel="verification" href="https://identity.nvo987.us/verification">
+<link rel="key-directory" href="https://identity.nvo987.us/keys">
+
+<!-- NODE METADATA -->
+
+<link rel="nodeinfo" href="https://identity.nvo987.us/.well-known/nodeinfo">
+
+<!-- DOMAIN FEDERATION -->
+
+<link rel="alternate" href="https://nvo987.us">
+<link rel="alternate" href="https://nvo987.fr">
+<link rel="alternate" href="https://knowledge.nvo987.us">
+<link rel="alternate" href="https://lab.nvo987.us">
+
+<link rel="me" href="https://nvo987.us">
+<link rel="me" href="https://nvo987.fr">
+<link rel="me" href="https://knowledge.nvo987.us">
+<link rel="me" href="https://lab.nvo987.us">
+
+<!-- SOCIAL IDENTITY -->
+
+<link rel="me" href="https://mastodon.social/@nvo987">
+<link rel="me" href="https://bsky.app/profile/nvo987.us">
+<link rel="me" href="https://nvo987.substack.com">
+
+<!-- SCHOLARLY IDENTIFIERS -->
+
+<link rel="me" href="https://orcid.org/0009-0007-4628-1871">
+<link rel="me" href="https://isni.org/isni/0000000529640885">
+<link rel="me" href="https://www.wikidata.org/wiki/Q137675227">
+
+<!-- OPEN GRAPH -->
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="nvo987 Identity Node">
+<meta property="og:description" content="Decentralized identity root did:web:identity.nvo987.us">
+<meta property="og:url" content="https://identity.nvo987.us">
+<meta property="og:site_name" content="nvo987 identity">
+<meta property="og:image" content="https://identity.nvo987.us/banner.jpg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="nvo987 Identity Node">
+<meta name="twitter:description" content="Decentralized identity root did:web:identity.nvo987.us">
+<meta name="twitter:image" content="https://identity.nvo987.us/banner.jpg">
+
+<meta name="yandex-verification" content="5d04ee3335696b00">
+
+<!-- MACHINE DATA -->
+
+<link rel="alternate" type="application/ld+json" href="https://identity.nvo987.us/machine/schema.jsonld">
+<link rel="alternate" type="application/ld+json" href="https://identity.nvo987.us/machine/publications.jsonld">
+<link rel="alternate" type="application/ld+json" href="https://identity.nvo987.us/machine/vc.jsonld">
+<link rel="alternate" type="application/ld+json" href="https://identity.nvo987.us/machine/ai.jsonld">
+<link rel="alternate" type="application/ld+json" href="https://identity.nvo987.us/machine/agents.jsonld">
+<link rel="alternate" type="application/ld+json" href="https://identity.nvo987.us/machine/graph.jsonld">
+
+<!-- API -->
+
+<link rel="service" href="https://identity.nvo987.us/api">
+<link rel="service" href="https://identity.nvo987.us/api/research">
+<link rel="service" href="https://identity.nvo987.us/api/knowledge">
+
+<!-- AI AGENTS -->
+
+<link rel="agent" href="https://identity.nvo987.us/ai/research-agent">
+<link rel="agent" href="https://identity.nvo987.us/ai/knowledge-agent">
+<link rel="agent" href="https://identity.nvo987.us/ai/sync-agent">
+
+<!-- IDENTITY GRAPH -->
+<script type="application/ld+json">
+{
+"@context":[
+"https://schema.org",
+"https://www.w3.org/ns/did/v1"
+],
+
+"@graph":[
+
+{
+"@id":"did:web:identity.nvo987.us",
+"@type":"Organization",
+"name":"NVO987 Identity",
+"identifier":"did:web:identity.nvo987.us",
+"url":"https://identity.nvo987.us",
+
+"founder":{"@id":"#nicholas-van-orton"},
+"creator":{"@id":"#nicholas-van-orton"},
+
+"sameAs":[
+"https://identity.nvo987.us",
+"https://nvo987.us",
+"https://nvo987.fr",
+"https://knowledge.nvo987.us",
+"https://lab.nvo987.us"
+],
+
+"hasPart":[
+{"@id":"did:web:identity.nvo987.us#identity-key"},
+{"@id":"did:web:identity.nvo987.us#profile"},
+{"@id":"did:web:identity.nvo987.us#identity-documents"},
+{"@id":"did:web:identity.nvo987.us#signed-documents"},
+{"@id":"did:web:identity.nvo987.us#verification"},
+{"@id":"did:web:identity.nvo987.us#key-directory"},
+{"@id":"did:web:identity.nvo987.us#identity-directory"},
+{"@id":"did:web:identity.nvo987.us#machine-schema"},
+{"@id":"did:web:identity.nvo987.us#machine-publications"},
+{"@id":"did:web:identity.nvo987.us#machine-vc"},
+{"@id":"did:web:identity.nvo987.us#machine-ai"},
+{"@id":"did:web:identity.nvo987.us#machine-agents"},
+{"@id":"did:web:identity.nvo987.us#machine-graph"},
+{"@id":"did:web:identity.nvo987.us#identity-api"},
+{"@id":"did:web:identity.nvo987.us#research-api"},
+{"@id":"did:web:identity.nvo987.us#knowledge-api"},
+{"@id":"did:web:identity.nvo987.us#ai-agents"},
+{"@id":"did:web:identity.nvo987.us#social"},
+{"@id":"did:web:identity.nvo987.us#scholarly"}
+]
+},
+
+{
+"@id":"#nicholas-van-orton",
+"@type":"Person",
+"name":"Nicholas Van-Orton",
+"url":"https://identity.nvo987.us"
+},
+
+{
+"@id":"did:web:identity.nvo987.us#identity-key",
+"@type":"CryptographicKey",
+"name":"Identity Public Key",
+"encodingFormat":"application/x-pem-file",
+"value":"MCowBQYDK2VwAyEAOHTUtam4WSrM99Zrf4gKv4crd2KE7p1Sx+8UYDrHoKs="
+},
+
+{
+"@id":"did:web:identity.nvo987.us#profile",
+"@type":"ProfilePage",
+"url":"https://identity.nvo987.us/profile"
+},
+
+{
+"@id":"did:web:identity.nvo987.us#identity-documents",
+"@type":"DataCatalog",
+"url":"https://identity.nvo987.us/documents"
+},
+
+{
+"@id":"did:web:identity.nvo987.us#signed-documents",
+"@type":"DataCatalog",
+"url":"https://identity.nvo987.us/signed"
+},
+
+{
+"@id":"did:web:identity.nvo987.us#verification",
+"@type":"WebAPI",
+"url":"https://identity.nvo987.us/verification"
+},
+
+{
+"@id":"did:web:identity.nvo987.us#key-directory",
+"@type":"DataCatalog",
+"url":"https://identity.nvo987.us/keys"
+},
+
+{
+"@id":"did:web:identity.nvo987.us#identity-directory",
+"@type":"DataCatalog",
+"url":"https://identity.nvo987.us/identity"
+},
+
+{
+"@id":"did:web:identity.nvo987.us#machine-schema",
+"@type":"Dataset",
+"url":"https://identity.nvo987.us/machine/schema.jsonld"
+},
+
+{
+"@id":"did:web:identity.nvo987.us#machine-publications",
+"@type":"Dataset",
+"url":"https://identity.nvo987.us/machine/publications.jsonld"
+},
+
+{
+"@id":"did:web:identity.nvo987.us#machine-vc",
+"@type":"Dataset",
+"url":"https://identity.nvo987.us/machine/vc.jsonld"
+},
+
+{
+"@id":"did:web:identity.nvo987.us#machine-ai",
+"@type":"Dataset",
+"url":"https://identity.nvo987.us/machine/ai.jsonld"
+},
+
+{
+"@id":"did:web:identity.nvo987.us#machine-agents",
+"@type":"Dataset",
+"url":"https://identity.nvo987.us/machine/agents.jsonld"
+},
+
+{
+"@id":"did:web:identity.nvo987.us#machine-graph",
+"@type":"Dataset",
+"url":"https://identity.nvo987.us/machine/graph.jsonld"
+},
+
+{
+"@id":"did:web:identity.nvo987.us#identity-api",
+"@type":"WebAPI",
+"url":"https://identity.nvo987.us/api"
+},
+
+{
+"@id":"did:web:identity.nvo987.us#research-api",
+"@type":"WebAPI",
+"url":"https://identity.nvo987.us/api/research"
+},
+
+{
+"@id":"did:web:identity.nvo987.us#knowledge-api",
+"@type":"WebAPI",
+"url":"https://identity.nvo987.us/api/knowledge"
+},
+
+{
+"@id":"did:web:identity.nvo987.us#ai-agents",
+"@type":"WebAPI",
+"url":"https://identity.nvo987.us/ai"
+},
+
+{
+"@id":"did:web:identity.nvo987.us#social",
+"@type":"ProfilePage",
+"sameAs":[
+"https://mastodon.social/@nvo987",
+"https://bsky.app/profile/nvo987.us"
+]
+},
+
+{
+"@id":"did:web:identity.nvo987.us#scholarly",
+"@type":"ProfilePage",
+"sameAs":[
+"https://orcid.org/0009-0007-4628-1871",
+"https://isni.org/isni/0000000529640885",
+"https://www.wikidata.org/wiki/Q137675227"
+]
+}
+
+]
+}
+</script>
+  
+</head>
+
+<body>
+
+<header class="hero">
+<div class="hero-overlay">
+
+<h1>NVO987 | Identity</h1>
+
+<p>
+Decentralized identity root for the DID
+<strong>did:web:identity.nvo987.us</strong>
+</p>
+
+<p>
+Personal research identity, knowledge network and decentralized web infrastructure.
+</p>
+
+</div>
+</header>
+      
+<nav class="main-menu">
+<a href="index.html">Home</a>
+<a href="social.html">Social Media</a>
+<a href="contact.html">Contact</a>
+</nav>
+      
+<main>
+
+<section>
+
+<h2>Overview</h2>
+
+<p>
+This website functions as the primary identity node associated with the
+decentralized identifier <strong>did:web:identity.nvo987.us</strong>.
+The node provides the canonical identity reference for a set of research
+domains, machine-readable datasets and cryptographic identity documents
+forming the NVO987 identity infrastructure.
+</p>
+
+<p>
+Through this node, identity metadata, verification keys and infrastructure
+endpoints are published in a form that allows independent verification by
+external systems and researchers. The architecture follows the principles
+of decentralized identifiers and web-based identity verification.
+</p>
+
+</section>
+
+
+<section>
+
+<h2>Founder</h2>
+
+<p>
+The identity infrastructure is maintained by <strong>Nicholas Van-Orton</strong>,
+an independent researcher working on decentralized knowledge systems,
+semantic web data and research identity infrastructure.
+</p>
+
+<p>
+The researcher’s persistent scholarly identifiers include the
+<a href="https://orcid.org/0009-0007-4628-1871">ORCID record</a>,
+the <a href="https://isni.org/isni/0000000529640885">ISNI identity entry</a>,
+and a structured knowledge graph profile in
+<a href="https://www.wikidata.org/wiki/Q137675227">Wikidata</a>.
+These identifiers provide persistent references linking the identity node
+to external academic metadata systems.
+</p>
+
+</section>
+
+
+<section>
+
+<h2>NVO987 Identity Framework</h2>
+
+<p>
+The NVO987 identity framework organizes research activity, digital
+knowledge resources and experimental web infrastructure under a
+single decentralized identity layer.
+</p>
+
+<p>
+The primary public domain associated with this framework is
+<a href="https://nvo987.us">nvo987.us</a>, which functions as the main
+entry point for research publications, knowledge network resources
+and infrastructure documentation.
+</p>
+
+</section>
+
+
+<section>
+
+<h2>NVO987 Association</h2>
+
+<p>
+The <strong>NVO987 Association</strong> is a non-profit organization that
+supports research collaboration, open knowledge publication and the
+development of decentralized research infrastructure.
+</p>
+
+<p>
+The association provides an institutional context for the NVO987
+knowledge network and supports the long-term development of research
+tools and knowledge systems. Additional information about the
+association can be found at
+<a href="https://nvo987.fr">nvo987.fr</a>.
+</p>
+
+</section>
+
+
+<section>
+
+<h2>Decentralized Identity Documents</h2>
+
+<p>
+The decentralized identity of this node is formally defined by a
+machine-readable DID document available at
+<a href="/.well-known/did.json">/.well-known/did.json</a>.
+This document contains the public verification methods and service
+endpoints associated with the identifier.
+</p>
+
+<p>
+Supporting configuration files include the
+<a href="/.well-known/did-configuration.json">DID configuration</a>,
+which describes domain identity bindings, and the
+<a href="/.well-known/domain-linkage.json">domain linkage statement</a>,
+which establishes cryptographic relationships between associated domains.
+</p>
+
+</section>
+
+
+<section>
+
+<h2>Cryptographic Verification</h2>
+
+<p>
+Identity verification within the infrastructure relies on publicly
+available cryptographic keys. The primary public key used for identity
+verification is distributed through the file
+<a href="/keys/identity-public.pem">identity-public.pem</a>.
+</p>
+
+<p>
+Additional key metadata describing the verification method and
+associated identity parameters can be found in the file
+<a href="/keys/identity-key.json">identity-key.json</a>.
+</p>
+
+</section>
+
+
+<section>
+
+<h2>Signed Statements</h2>
+
+<p>
+A set of digitally signed documents provides verifiable statements
+describing identity claims, research activity and knowledge graph
+integrity.
+</p>
+
+<p>
+The primary identity declaration is published as
+<a href="/signed/identity-statement.json">identity-statement.json</a>,
+while research activity is documented in
+<a href="/signed/research-statement.json">research-statement.json</a>.
+The integrity of the knowledge graph infrastructure is described
+through the signed document
+<a href="/signed/knowledge-graph-signature.json">knowledge-graph-signature.json</a>.
+</p>
+
+</section>
+
+
+<section>
+
+<h2>Associated Domains</h2>
+
+<p>
+The identity node links several domains forming the broader NVO987
+research infrastructure. The main public domain is
+<a href="https://nvo987.us">nvo987.us</a>, while institutional
+information about the association is published at
+<a href="https://nvo987.fr">nvo987.fr</a>.
+</p>
+
+<p>
+Specialized infrastructure components are hosted on additional
+domains including the knowledge network platform
+<a href="https://knowledge.nvo987.us">knowledge.nvo987.us</a>
+and the experimental research environment
+<a href="https://lab.nvo987.us">lab.nvo987.us</a>.
+</p>
+
+</section>
+
+
+<section>
+
+<h2>Machine-Readable Data</h2>
+
+<p>
+The identity node publishes structured datasets designed for automated
+systems, knowledge graph tools and AI-based research agents.
+</p>
+
+<p>
+These datasets include schema definitions
+(<a href="https://identity.nvo987.us/machine/schema.jsonld">schema.jsonld</a>),
+research publication metadata
+(<a href="https://identity.nvo987.us/machine/publications.jsonld">publications.jsonld</a>),
+verifiable credential structures
+(<a href="https://identity.nvo987.us/machine/vc.jsonld">vc.jsonld</a>),
+AI infrastructure metadata
+(<a href="https://identity.nvo987.us/machine/ai.jsonld">ai.jsonld</a>),
+an agent registry
+(<a href="https://identity.nvo987.us/machine/agents.jsonld">agents.jsonld</a>)
+and the knowledge graph description
+(<a href="https://identity.nvo987.us/machine/graph.jsonld">graph.jsonld</a>).
+</p>
+
+</section>
+
+
+<section>
+
+<h2>Infrastructure APIs</h2>
+
+<p>
+Programmatic access to identity metadata and knowledge network
+resources is provided through a set of infrastructure APIs.
+</p>
+
+<p>
+The base service endpoint is available at
+<a href="https://identity.nvo987.us/api">identity.nvo987.us/api</a>.
+Specialized endpoints provide access to research data
+(<a href="https://identity.nvo987.us/api/research">/api/research</a>)
+and knowledge graph services
+(<a href="https://identity.nvo987.us/api/knowledge">/api/knowledge</a>).
+</p>
+
+</section>
+
+
+<section>
+
+<h2>AI Agents</h2>
+
+<p>
+The infrastructure also exposes several autonomous agents designed to
+interact with research datasets and knowledge graph services.
+</p>
+
+<p>
+These include the research processing agent
+(<a href="/ai/research-agent">research-agent</a>),
+the knowledge graph interaction agent
+(<a href="/ai/knowledge-agent">knowledge-agent</a>)
+and the synchronization agent responsible for maintaining distributed
+data consistency
+(<a href="/ai/sync-agent">sync-agent</a>).
+</p>
+
+</section>
+
+
+<section>
+
+<h2>Identity Files</h2>
+
+<p>
+Canonical identity files and cryptographic proof artifacts are
+published in the identity directory. The primary identity record
+is available as
+<a href="https://identity.nvo987.us/identity/identity.json">identity.json</a>.
+</p>
+
+<p>
+Verification artifacts include the public key
+(<a href="https://identity.nvo987.us/identity/identity-public.pem">identity-public.pem</a>),
+signature files
+(<a href="https://identity.nvo987.us/identity/identity.sig">identity.sig</a>,
+<a href="https://identity.nvo987.us/identity/proof.sig">proof.sig</a>)
+and integrity hashes
+(<a href="https://identity.nvo987.us/identity/identity.sha512">identity.sha512</a>,
+<a href="https://identity.nvo987.us/identity/proof.sha512">proof.sha512</a>).
+</p>
+
+</section>
+
+<section>
+
+<h2>Network and Publications</h2>
+
+<p>
+The NVO987 identity node is connected to a broader research and publication
+network across federated and professional platforms. These channels provide
+updates, publications and research commentary related to decentralized identity,
+knowledge networks and infrastructure development.
+</p>
+
+<ul>
+
+<li>
+<a href="https://mastodon.social/@nvo987">
+Mastodon – federated research presence
+</a>
+</li>
+
+<li>
+<a href="https://www.linkedin.com/in/nvo987">
+LinkedIn – professional profile
+</a>
+</li>
+
+<li>
+<a href="https://bsky.app/profile/nvo987.us">
+Bluesky – decentralized social layer
+</a>
+</li>
+
+<li>
+<a href="https://nvo987.substack.com">
+Substack – research articles and essays
+</a>
+</li>
+
+<li>
+<a href="https://nvo987.substack.com/feed">
+Substack - RSS feed
+</a>
+</li>
+
+</ul>
+
+</section> 
+
+</main>
+
+<footer>
+
+<p>
+© NVO987
+</p>
+
+<p>
+Identity node for the decentralized identifier
+<strong>did:web:identity.nvo987.us</strong>.
+</p>
+
+<p>
+Infrastructure root:
+<a href="https://identity.nvo987.us">identity.nvo987.us</a>
+</p>
+
+</footer>
+
+</body>
+</html>
+
+
