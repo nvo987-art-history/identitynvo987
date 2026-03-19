@@ -1,0 +1,18 @@
+{
+  "@context": "https://schema.org",
+  "id": "https://identity.nvo987.us/api",
+  "type": "WebAPI",
+  "name": "NVO987 Identity API",
+  "provider": {
+    "id": "https://identity.nvo987.us/identity/brand"
+  },
+  "creator": {
+    "id": "https://identity.nvo987.us/identity/person"
+  },
+  "identifier": "did:web:identity.nvo987.us",
+  "hasPart": [
+    "https://identity.nvo987.us/api/identity.jsonld",
+    "https://identity.nvo987.us/api/research.jsonld",
+    "https://identity.nvo987.us/api/knowledge.jsonld"
+  ]
+}
