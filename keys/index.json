@@ -1,0 +1,9 @@
+{
+  "directory": "NVO987 Identity Key Directory",
+  "controller": "Nicholas Van-Orton",
+  "brand": "NVO987",
+  "did": "did:web:identity.nvo987.us",
+  "keys": [
+    "identity-key.json"
+  ]
+}
