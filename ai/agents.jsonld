@@ -1,0 +1,13 @@
+{
+  "@context": "https://schema.org",
+  "id": "https://identity.nvo987.us/ai/agents",
+  "type": "Dataset",
+  "name": "NVO987 Agent Directory",
+  "creator": {
+    "id": "https://identity.nvo987.us/identity/person"
+  },
+  "publisher": {
+    "id": "https://identity.nvo987.us/identity/brand"
+  },
+  "description": "Directory of AI agents associated with the NVO987 identity."
+}
