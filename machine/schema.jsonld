@@ -1,0 +1,12 @@
+{
+  "@context": "https://schema.org",
+  "id": "https://identity.nvo987.us/machine/schema",
+  "type": "Dataset",
+  "name": "NVO987 Identity Schema",
+  "creator": {
+    "id": "https://identity.nvo987.us/identity/person"
+  },
+  "publisher": {
+    "id": "https://identity.nvo987.us/identity/brand"
+  }
+}
