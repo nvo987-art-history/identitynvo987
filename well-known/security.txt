@@ -1,5 +1,10 @@
 Contact: mailto:nvo@nvo987.us
-Expires: 2027-03-19T00:00:00Z
-Preferred-Languages: en
 Canonical: https://identity.nvo987.us/.well-known/security.txt
-Policy: https://identity.nvo987.us/security 
+Encryption: https://identity.nvo987.us/keys
+Preferred-Languages: en
+Policy: https://identity.nvo987.us/security
+Hiring: https://nvo987.us
+Expires: 2027-01-01T00:00:00Z
+
+Organization: NVO987
+Site: https://identity.nvo987.us 
