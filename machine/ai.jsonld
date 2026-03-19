@@ -1,0 +1,12 @@
+{
+  "@context": "https://schema.org",
+  "id": "https://identity.nvo987.us/machine/ai",
+  "type": "Dataset",
+  "name": "NVO987 AI Metadata",
+  "creator": {
+    "id": "https://identity.nvo987.us/identity/person"
+  },
+  "publisher": {
+    "id": "https://identity.nvo987.us/identity/brand"
+  }
+}
