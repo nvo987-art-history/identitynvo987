@@ -1,40 +1,26 @@
-/* HUMAN IDENTITY */
+/* TEAM */
 
 Name: Nicholas Van-Orton
+Role: Researcher / Digital Humanist
+Brand: NVO987
+Email: nvo@nvo987.us
 DID: did:web:identity.nvo987.us
-Primary Identity: https://identity.nvo987.us
+Location: Internet
 
-/* DOMAIN NETWORK */
+/* IDENTITY */
 
-identity.nvo987.us
-nvo987.us
-nvo987.fr
-knowledge.nvo987.us
-lab.nvo987.us
-
-/* SERVICES */
-
-Profile: https://identity.nvo987.us/profile
-Documents: https://identity.nvo987.us/documents
-Signed Documents: https://identity.nvo987.us/signed
-Verification: https://identity.nvo987.us/verification
-Keys: https://identity.nvo987.us/keys
-API: https://identity.nvo987.us/api
-AI Agents: https://identity.nvo987.us/ai
-
-/* MACHINE DATA */
-
-Schema: https://identity.nvo987.us/machine/schema.jsonld
-Publications: https://identity.nvo987.us/machine/publications.jsonld
-Credentials: https://identity.nvo987.us/machine/vc.jsonld
-AI Metadata: https://identity.nvo987.us/machine/ai.jsonld
-Agents: https://identity.nvo987.us/machine/agents.jsonld
-Knowledge Graph: https://identity.nvo987.us/machine/graph.jsonld
+Domain: https://identity.nvo987.us
+Primary Website: https://nvo987.us
+Knowledge Platform: https://knowledge.nvo987.us
+Research Lab: https://lab.nvo987.us
+Art Platform: https://art.nvo987.us
+Social Hub: https://social.nvo987.us
 
 /* SOCIAL */
 
 Mastodon: https://mastodon.social/@nvo987
 Bluesky: https://bsky.app/profile/nvo987.us
+Substack: https://nvo987.substack.com
 
 /* SCHOLARLY */
 
@@ -42,6 +28,9 @@ ORCID: https://orcid.org/0009-0007-4628-1871
 ISNI: https://isni.org/isni/0000000529640885
 Wikidata: https://www.wikidata.org/wiki/Q137675227
 
-/* REPOSITORY */
+/* TECH */
 
-Source: https://github.com/nvo987-art-history/identity
+Identity System: Decentralized Identity (DID)
+Method: did:web
+Root DID: did:web:identity.nvo987.us
+Repository: https://github.com/nvo987/identity.nvo987.us
