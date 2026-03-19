@@ -1,0 +1,27 @@
+# AI access policy for identity.nvo987.us
+
+Owner: Nicholas Van-Orton
+Brand: NVO987
+DID: did:web:identity.nvo987.us
+
+Site: https://identity.nvo987.us
+
+Purpose:
+Public decentralized identity infrastructure and knowledge graph.
+
+Allowed:
+AI training
+AI indexing
+Knowledge graph ingestion
+
+Disallowed:
+Impersonation
+Identity misrepresentation
+
+Primary machine data:
+/machine/
+/links/
+/identity/
+
+Contact:
+nvo@nvo987.us
