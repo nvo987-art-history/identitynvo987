@@ -1,0 +1,13 @@
+{
+  "@context": "https://schema.org",
+  "id": "https://identity.nvo987.us/ai/capabilities",
+  "type": "Dataset",
+  "name": "NVO987 AI Capabilities",
+  "creator": {
+    "id": "https://identity.nvo987.us/identity/person"
+  },
+  "publisher": {
+    "id": "https://identity.nvo987.us/identity/brand"
+  },
+  "description": "Capabilities and interaction metadata for AI agents connected to the NVO987 identity."
+}
