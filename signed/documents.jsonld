@@ -1,0 +1,13 @@
+{
+  "@context": "https://schema.org",
+  "id": "https://identity.nvo987.us/signed/documents",
+  "type": "DigitalDocument",
+  "name": "Signed Documents",
+  "creator": {
+    "id": "https://identity.nvo987.us/profile/person"
+  },
+  "publisher": {
+    "id": "https://identity.nvo987.us/profile/brand"
+  },
+  "identifier": "did:web:identity.nvo987.us"
+}
