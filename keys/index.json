@@ -1,0 +1,8 @@
+{
+  "@context": "https://w3id.org/security/multikey/v1",
+  "id": "https://identity.nvo987.us/keys",
+  "controller": "did:web:identity.nvo987.us",
+  "keys": [
+    "https://identity.nvo987.us/keys/identity-key.json"
+  ]
+}
