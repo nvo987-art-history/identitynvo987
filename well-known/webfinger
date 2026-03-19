@@ -14,11 +14,6 @@
       "rel": "self",
       "type": "application/did+json",
       "href": "https://identity.nvo987.us/did.json"
-    },
-    {
-      "rel": "profile-page",
-      "type": "text/html",
-      "href": "https://identity.nvo987.us"
     }
   ]
 }
