@@ -1,0 +1,17 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "NVO987 Identity",
+  "name_for_model": "nvo987_identity",
+  "description_for_human": "Decentralized identity and knowledge graph for Nicholas Van-Orton.",
+  "description_for_model": "Identity graph and decentralized identifier services for DID did:web:identity.nvo987.us.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://identity.nvo987.us/api/openapi.json"
+  },
+  "logo_url": "https://identity.nvo987.us/avatar.jpg",
+  "contact_email": "nvo@nvo987.us",
+  "legal_info_url": "https://identity.nvo987.us"
+}
