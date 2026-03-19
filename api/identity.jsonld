@@ -1,0 +1,14 @@
+{
+  "@context": "https://schema.org",
+  "id": "https://identity.nvo987.us/api/identity",
+  "type": "WebAPI",
+  "name": "Identity API",
+  "documentation": "https://identity.nvo987.us/identity",
+  "provider": {
+    "id": "https://identity.nvo987.us/identity/brand"
+  },
+  "creator": {
+    "id": "https://identity.nvo987.us/identity/person"
+  },
+  "identifier": "did:web:identity.nvo987.us"
+}
