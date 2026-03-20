@@ -6,5 +6,5 @@
   "id": "https://identity.nvo987.us/keys/identity-key.json",
   "type": "Ed25519VerificationKey2020",
   "controller": "did:web:identity.nvo987.us",
-  "publicKeyMultibase": "REPLACE_WITH_PUBLIC_KEY"
+  "publicKeyMultibase": "z6MkjQL9VfYxZvM14QbpLgKf7DVuxLd8wevKhJqjcre42Yod"
 }
