@@ -5,7 +5,7 @@
       "crv": "Ed25519",
       "use": "sig",
       "kid": "identity-key",
-      "x": "PUBLIC_KEY_BASE64URL"
+      "x": "SYpUgj9NeVqTVjxhZdzV62__em25owVCxquTY8_p8yQ"
     }
   ]
 }
