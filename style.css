@@ -50,7 +50,6 @@ HERO BANNER
 background:url("banner.jpg");
 
 background-size:cover;
-
 background-position:center;
 
 border-radius:12px;
@@ -58,9 +57,7 @@ border-radius:12px;
 min-height:260px;
 
 display:flex;
-
 align-items:center;
-
 justify-content:center;
 
 text-align:center;
@@ -78,21 +75,18 @@ GLASS PANEL
 
 .hero-overlay{
 
-background:rgba(255,255,255,0.18);
+background:rgba(255,255,255,0.12);
 
-backdrop-filter:blur(6px);
-
--webkit-backdrop-filter:blur(6px);
+backdrop-filter:blur(3px);
+-webkit-backdrop-filter:blur(3px);
 
 border-radius:12px;
 
-padding:22px 28px;
-
-border:1px solid rgba(255,255,255,0.35);
+padding:24px 30px;
 
 max-width:640px;
 
-box-shadow:0 10px 25px rgba(0,0,0,0.25);
+border:1px solid rgba(255,255,255,0.35);
 
 }
 
@@ -103,15 +97,18 @@ HERO TITLE
 
 .hero-overlay h1{
 
-font-size:2.3rem;
+font-size:2.4rem;
 
-color:white;
+color:#0a4fa3;
+
+/* fehér kontúr */
+
+-webkit-text-stroke:1.5px white;
 
 letter-spacing:1px;
 
--webkit-text-stroke:1px #6b2a2a;
-
-text-shadow:0 3px 8px rgba(0,0,0,0.8);
+text-shadow:
+0 3px 6px rgba(0,0,0,0.4);
 
 margin-bottom:10px;
 
@@ -124,13 +121,14 @@ HERO TEXT
 
 .hero-overlay p{
 
-color:white;
+color:#0a4fa3;
+
+-webkit-text-stroke:0.6px white;
 
 font-size:1.05rem;
 
--webkit-text-stroke:0.3px #6b2a2a;
-
-text-shadow:0 2px 6px rgba(0,0,0,0.8);
+text-shadow:
+0 2px 4px rgba(0,0,0,0.4);
 
 }
 
@@ -163,22 +161,20 @@ font-size:0.95rem;
 
 
 /* =========================
-MAIN LAYOUT
+MAIN
 ========================= */
 
 main{
 
 display:flex;
-
 flex-direction:column;
-
 gap:36px;
 
 }
 
 
 /* =========================
-FLOATING CARD ANIMATION
+CARD FLOAT ANIMATION
 ========================= */
 
 @keyframes floatCard{
@@ -270,7 +266,6 @@ transition:0.2s;
 a:hover{
 
 opacity:0.8;
-
 text-decoration:underline;
 
 }
@@ -360,47 +355,6 @@ margin-bottom:12px;
 
 
 /* =========================
-RESEARCHER CARD
-========================= */
-
-.researcher-card{
-
-display:flex;
-
-gap:24px;
-
-margin-top:18px;
-
-flex-wrap:wrap;
-
-align-items:flex-start;
-
-}
-
-.researcher-photo{
-
-width:140px;
-
-height:140px;
-
-object-fit:cover;
-
-border-radius:8px;
-
-border:2px solid #ffd700;
-
-}
-
-.researcher-info{
-
-flex:1;
-
-min-width:220px;
-
-}
-
-
-/* =========================
 FOOTER
 ========================= */
 
@@ -447,7 +401,7 @@ min-height:200px;
 
 .hero-overlay h1{
 
-font-size:1.7rem;
+font-size:1.8rem;
 
 }
 
@@ -462,24 +416,6 @@ section{
 padding:26px;
 
 animation:none;
-
-}
-
-.researcher-card{
-
-flex-direction:column;
-
-align-items:center;
-
-text-align:center;
-
-}
-
-.researcher-photo{
-
-width:120px;
-
-height:120px;
 
 }
 
