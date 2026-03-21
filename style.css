@@ -2,9 +2,7 @@
 RESET
 ========================= */
 
-*,
-*::before,
-*::after{
+* {
 box-sizing:border-box;
 margin:0;
 padding:0;
@@ -26,7 +24,7 @@ Helvetica,
 Arial,
 sans-serif;
 
-background:#f5f5f5;
+background:#f4f4f4;
 
 color:#222;
 
@@ -36,7 +34,7 @@ max-width:920px;
 
 margin:auto;
 
-padding:30px 18px 60px;
+padding:30px 16px 60px;
 
 }
 
@@ -47,22 +45,21 @@ HERO BANNER
 
 .hero{
 
-background:url("banner.jpg");
-
-background-size:cover;
-background-position:center;
+background:url("banner.jpg") center/cover no-repeat;
 
 border-radius:12px;
 
 min-height:260px;
 
 display:flex;
+
 align-items:center;
+
 justify-content:center;
 
 text-align:center;
 
-padding:40px 20px;
+padding:30px;
 
 margin-bottom:30px;
 
@@ -75,40 +72,39 @@ GLASS PANEL
 
 .hero-overlay{
 
-background:rgba(255,255,255,0.12);
+background:rgba(255,255,255,0.18);
 
-backdrop-filter:blur(3px);
--webkit-backdrop-filter:blur(3px);
+backdrop-filter:blur(5px);
+-webkit-backdrop-filter:blur(5px);
 
 border-radius:12px;
 
-padding:24px 30px;
+padding:22px 28px;
 
-max-width:640px;
+max-width:620px;
 
 border:1px solid rgba(255,255,255,0.35);
+
+box-shadow:0 8px 20px rgba(0,0,0,0.25);
 
 }
 
 
 /* =========================
-HERO TITLE
+BANNER TITLE
 ========================= */
 
 .hero-overlay h1{
 
-font-size:2.4rem;
+font-size:2.3rem;
 
-color:#0a4fa3;
+color:#007FFF;
 
-/* fehér kontúr */
-
--webkit-text-stroke:1.5px white;
+-webkit-text-stroke:1.2px white;
 
 letter-spacing:1px;
 
-text-shadow:
-0 3px 6px rgba(0,0,0,0.4);
+text-shadow:0 3px 6px rgba(0,0,0,0.4);
 
 margin-bottom:10px;
 
@@ -116,46 +112,18 @@ margin-bottom:10px;
 
 
 /* =========================
-HERO TEXT
+BANNER TEXT
 ========================= */
 
 .hero-overlay p{
 
-color:#0a4fa3;
+color:#007FFF;
 
 -webkit-text-stroke:0.6px white;
 
 font-size:1.05rem;
 
-text-shadow:
-0 2px 4px rgba(0,0,0,0.4);
-
-}
-
-
-/* =========================
-DID HERO BLOCK
-========================= */
-
-.did-hero{
-
-background:white;
-
-border-radius:10px;
-
-padding:18px;
-
-margin-bottom:40px;
-
-border-left:6px solid #d4af37;
-
-box-shadow:0 6px 20px rgba(0,0,0,0.1);
-
-text-align:center;
-
-font-family:monospace;
-
-font-size:0.95rem;
+text-shadow:0 2px 4px rgba(0,0,0,0.4);
 
 }
 
@@ -167,29 +135,16 @@ MAIN
 main{
 
 display:flex;
+
 flex-direction:column;
-gap:36px;
+
+gap:30px;
 
 }
 
 
 /* =========================
-CARD FLOAT ANIMATION
-========================= */
-
-@keyframes floatCard{
-
-0%{transform:translateY(0)}
-
-50%{transform:translateY(-5px)}
-
-100%{transform:translateY(0)}
-
-}
-
-
-/* =========================
-CONTENT CARDS
+CARDS
 ========================= */
 
 section{
@@ -198,15 +153,13 @@ background:#7b2f2f;
 
 color:white;
 
-padding:34px;
+padding:30px;
 
 border-radius:10px;
 
 border-left:6px solid #d4af37;
 
 box-shadow:0 10px 25px rgba(0,0,0,0.2);
-
-animation:floatCard 7s ease-in-out infinite;
 
 }
 
@@ -219,19 +172,11 @@ h2{
 
 font-size:1.6rem;
 
-margin-bottom:16px;
+margin-bottom:14px;
 
 border-bottom:1px solid rgba(255,255,255,0.25);
 
 padding-bottom:8px;
-
-}
-
-h3{
-
-font-size:1.25rem;
-
-margin-bottom:12px;
 
 }
 
@@ -242,7 +187,7 @@ TEXT
 
 p{
 
-margin-bottom:16px;
+margin-bottom:14px;
 
 }
 
@@ -259,13 +204,10 @@ text-decoration:none;
 
 word-break:break-word;
 
-transition:0.2s;
-
 }
 
 a:hover{
 
-opacity:0.8;
 text-decoration:underline;
 
 }
@@ -283,19 +225,21 @@ grid-template-columns:1fr 1fr;
 
 gap:12px;
 
-margin-top:12px;
+margin-top:14px;
 
 }
 
 .endpoint{
 
-background:rgba(255,255,255,0.1);
+background:rgba(255,255,255,0.12);
 
-padding:12px;
+padding:10px;
 
 border-radius:6px;
 
 font-family:monospace;
+
+font-size:0.9rem;
 
 border-left:3px solid #ffd700;
 
@@ -305,51 +249,65 @@ word-break:break-all;
 
 
 /* =========================
-CRYPTO KEY BLOCK
+CRYPTO BLOCK
 ========================= */
 
 .crypto-key{
 
 background:#2b1111;
 
-padding:18px;
+padding:16px;
 
 border-radius:8px;
 
 font-family:monospace;
 
-font-size:0.9rem;
+font-size:0.85rem;
 
 border:1px solid #ffd700;
 
 word-break:break-all;
 
-margin-top:16px;
+margin-top:14px;
 
 }
 
 
 /* =========================
-IDENTITY BADGE
+RESEARCHER CARD
 ========================= */
 
-.identity-badge{
+.researcher-card{
 
-display:inline-block;
+display:flex;
 
-background:#ffd700;
+gap:20px;
 
-color:#3b1a1a;
+flex-wrap:wrap;
 
-font-weight:600;
+align-items:flex-start;
 
-padding:6px 12px;
+}
 
-border-radius:6px;
+.researcher-photo{
 
-font-size:0.8rem;
+width:140px;
 
-margin-bottom:12px;
+height:140px;
+
+object-fit:cover;
+
+border-radius:8px;
+
+border:2px solid #ffd700;
+
+}
+
+.researcher-info{
+
+flex:1;
+
+min-width:220px;
 
 }
 
@@ -360,23 +318,17 @@ FOOTER
 
 footer{
 
-margin-top:60px;
+margin-top:50px;
 
-padding-top:24px;
+padding-top:20px;
 
 border-top:1px solid #ccc;
 
 text-align:center;
 
-font-size:0.95rem;
+font-size:0.9rem;
 
 color:#555;
-
-}
-
-footer p{
-
-margin:6px 0;
 
 }
 
@@ -397,11 +349,19 @@ MOBILE
 
 min-height:200px;
 
+padding:20px;
+
 }
 
 .hero-overlay h1{
 
-font-size:1.8rem;
+font-size:1.7rem;
+
+}
+
+.hero-overlay p{
+
+font-size:0.95rem;
 
 }
 
@@ -413,9 +373,25 @@ grid-template-columns:1fr;
 
 section{
 
-padding:26px;
+padding:24px;
 
-animation:none;
+}
+
+.researcher-card{
+
+flex-direction:column;
+
+align-items:center;
+
+text-align:center;
+
+}
+
+.researcher-photo{
+
+width:120px;
+
+height:120px;
 
 }
 
