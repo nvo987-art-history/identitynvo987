@@ -101,17 +101,6 @@
     "https://didweb3.org"
   ],
 
-  "subjectOf": [
-    {
-      "@type": "ResearchProject",
-      "name": "Color as a Generative Principle in the Work of Sonia Delaunay"
-    },
-    {
-      "@type": "ResearchProject",
-      "name": "Civilizational Interpretive Ratio"
-    }
-  ],
-
   "hasCredential": [
     {
       "@type": "EducationalOccupationalCredential",
@@ -131,6 +120,16 @@
   ],
 
   "subjectOf": [
+
+    {
+      "@type": "ResearchProject",
+      "name": "Color as a Generative Principle in the Work of Sonia Delaunay"
+    },
+    {
+      "@type": "ResearchProject",
+      "name": "Civilizational Interpretive Ratio"
+    },
+
     {
       "@type": "ScholarlyArticle",
       "name": "Color as a Generative Principle in the Work of Sonia Delaunay",
@@ -139,6 +138,7 @@
         "@id": "https://identity.nvo987.us/profile/person"
       }
     },
+
     {
       "@type": "Book",
       "name": "Color as a Generative Principle in the Work of Sonia Delaunay",
@@ -152,6 +152,7 @@
         "identifier": "https://doi.org/10.2139/ssrn.6007654"
       }
     }
+
   ],
 
   "@reverse": {
