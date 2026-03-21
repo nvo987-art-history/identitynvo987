@@ -1,6 +1,11 @@
 {
-  "@context": "https://schema.org",
-  "@id": "https://identity.nvo987.us/profile/person",
+  "@context": [
+    "https://schema.org",
+    "https://www.w3.org/ns/did/v1",
+    "https://w3id.org/security/suites/ed25519-2020/v1"
+  ],
+
+  "@id": "did:web:identity.nvo987.us#me",
   "@type": "Person",
 
   "name": "Nicholas Van-Orton",
@@ -82,7 +87,7 @@
     "@id": "https://nvo987.fr/#organization",
     "name": "NVO987 – Culture Visuelle Moderne et Contemporaine",
     "founder": {
-      "@id": "https://identity.nvo987.us/profile/person"
+      "@id": "did:web:identity.nvo987.us#me"
     }
   },
 
@@ -120,7 +125,6 @@
   ],
 
   "subjectOf": [
-
     {
       "@type": "ResearchProject",
       "name": "Color as a Generative Principle in the Work of Sonia Delaunay"
@@ -129,22 +133,20 @@
       "@type": "ResearchProject",
       "name": "Civilizational Interpretive Ratio"
     },
-
     {
       "@type": "ScholarlyArticle",
       "name": "Color as a Generative Principle in the Work of Sonia Delaunay",
       "identifier": "https://doi.org/10.2139/ssrn.6007654",
       "author": {
-        "@id": "https://identity.nvo987.us/profile/person"
+        "@id": "did:web:identity.nvo987.us#me"
       }
     },
-
     {
       "@type": "Book",
       "name": "Color as a Generative Principle in the Work of Sonia Delaunay",
       "isbn": "978-615-02-6092-1",
       "author": {
-        "@id": "https://identity.nvo987.us/profile/person"
+        "@id": "did:web:identity.nvo987.us#me"
       },
       "citation": {
         "@type": "ScholarlyArticle",
@@ -152,10 +154,17 @@
         "identifier": "https://doi.org/10.2139/ssrn.6007654"
       }
     }
-
   ],
 
   "@reverse": {
     "identifier": "did:web:identity.nvo987.us"
+  },
+
+  "proof": {
+    "type": "Ed25519Signature2020",
+    "created": "",
+    "proofPurpose": "assertionMethod",
+    "verificationMethod": "did:web:identity.nvo987.us#identity-key",
+    "jws": ""
   }
 }
