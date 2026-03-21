@@ -15,7 +15,7 @@
 body {
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   background: #ffffff;
-  color: #222222;
+  color: #222;
   line-height: 1.6;
 
   min-height: 100vh;
@@ -43,7 +43,7 @@ body {
 }
 
 .hero-overlay {
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(0,0,0,0.55);
   padding: 22px 32px;
   border-radius: 14px;
   color: #ffffff;
@@ -106,7 +106,7 @@ main section:first-child {
 }
 
 /* =========================
-   SECTIONS (CARD STYLE)
+   SECTIONS (BORDÓ KÁRTYA)
 ========================= */
 
 section {
@@ -117,8 +117,6 @@ section {
   color: #ffffff;
 
   border-radius: 14px;
-
-  border: 1px solid rgba(0,0,0,0.08);
 
   border-left: 4px solid #d4af37;
 
@@ -150,7 +148,7 @@ h1 {
 h2 {
   font-size: 1.65rem;
   margin-bottom: 14px;
-  border-bottom: 1px solid rgba(255,255,255,0.2);
+  border-bottom: 1px solid rgba(255,255,255,0.25);
   padding-bottom: 6px;
 }
 
@@ -176,12 +174,12 @@ li {
    LINKS
 ========================= */
 
-a {
+section a {
   color: #ffe6d5;
   text-decoration: none;
 }
 
-a:hover {
+section a:hover {
   color: #ffffff;
   text-decoration: underline;
 }
@@ -191,15 +189,12 @@ a:hover {
 ========================= */
 
 .researcher-card {
-
   display: flex;
   gap: 24px;
   align-items: center;
-
 }
 
 .researcher-photo {
-
   width: 140px;
   height: 140px;
 
@@ -207,8 +202,7 @@ a:hover {
 
   object-fit: cover;
 
-  border: 2px solid rgba(255,255,255,0.4);
-
+  border: 2px solid rgba(255,255,255,0.35);
 }
 
 .researcher-info {
@@ -270,7 +264,17 @@ a:hover {
 footer {
   text-align: center;
   margin-top: 1.5rem;
-  opacity: 0.85;
+  padding-bottom: 2rem;
   font-size: 0.95rem;
-  color: #555;
-   }
+
+  color: #333;
+}
+
+footer a {
+  color: #6b3f2a;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+     }
