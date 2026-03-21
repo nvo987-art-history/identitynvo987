@@ -214,10 +214,10 @@ gtag('config', 'G-SPZS0FSKW3');
 
 
 </head>
-
 <body>
 
 <header class="hero">
+
 <div class="hero-overlay">
 
 <h1>NVO987 | Identity</h1>
@@ -232,36 +232,30 @@ Personal research identity, knowledge network and decentralized web infrastructu
 </p>
 
 </div>
+
 </header>
-      
-<nav class="main-menu">
-<a href="index.html">Home</a>
-<a href="contact.html">Contact</a>
-</nav>
-      
+
+
 <main>
 
-<section>
 
-<h2>
-Overview of the identity.nvo987.us<br>
-Infrastructure
-</h2>
+<section class="content-block">
+
+<h2>Infrastructure Overview</h2>
 
 <p>
-The <a href="https://identity.nvo987.us">https://identity.nvo987.us</a> domain
-serves as the decentralized identity node of the NVO987 research infrastructure.
-This system provides the official publication of the
+The https://identity.nvo987.us domain serves as the decentralized identity node
+of the NVO987 research infrastructure.
+This system publishes the official
 <strong>did:web:identity.nvo987.us</strong>
-decentralized identifier, along with the associated metadata,
+identifier together with metadata,
 cryptographic verification information,
 and infrastructure documentation.
 </p>
 
 <p>
 The purpose of the identity node is to provide a publicly verifiable
-digital identity reference point
-for research systems operating on the web,
+digital identity reference point for research systems operating on the web,
 federated services,
 and decentralized identity infrastructures.
 </p>
@@ -271,189 +265,139 @@ The documents published on this site enable external systems
 to automatically discover,
 resolve,
 and verify the identity,
-as well as the infrastructure components
-associated with it.
+as well as the infrastructure components associated with it.
 </p>
 
 </section>
 
 
-<section>
 
-<h3>Decentralized Identifier (DID)</h3>
+<section class="content-block">
+
+<h2>Decentralized Identifier (DID)</h2>
 
 <p>
 The central element of the infrastructure is the
 <strong>did:web:identity.nvo987.us</strong>
 identifier.
 This identifier is a web-based identity built on the
-W3C Decentralized Identifiers standard,
-defining a domain-bound,
-publicly verifiable digital identifier.
+W3C Decentralized Identifiers standard.
 </p>
 
 <p>
-The DID document is available at the following location:
+DID document:
 </p>
 
 <p>
+
 <a href="https://identity.nvo987.us/.well-known/did.json">
 https://identity.nvo987.us/.well-known/did.json
 </a>
+
 </p>
 
 <p>
-The document contains the verification keys,
-authentication methods,
-and service endpoints
-associated with the identity.
+Domain verification:
 </p>
 
 <p>
-The relationship between the domain
-and the decentralized identifier
-is defined in the following configuration document:
-</p>
 
-<p>
 <a href="https://identity.nvo987.us/.well-known/did-configuration.json">
 https://identity.nvo987.us/.well-known/did-configuration.json
 </a>
-</p>
 
-<p>
-This document enables external systems
-to verify that the domain owner
-controls the decentralized identifier.
 </p>
 
 </section>
 
 
-<section>
 
-<h4>Identity Discovery and Metadata Endpoints</h4>
+<section class="content-block">
 
-<p>
-The identity node publishes several standard
-discovery and infrastructure metadata
-documents that enable automatic
-identity resolution across
-federated and decentralized systems.
-</p>
+<h2>Identity Discovery and Metadata</h2>
 
 <ul>
 
 <li>
 <a href="https://identity.nvo987.us/.well-known/webfinger">
-https://identity.nvo987.us/.well-known/webfinger
+WebFinger discovery endpoint
 </a>
-– WebFinger identity discovery endpoint
 </li>
 
 <li>
 <a href="https://identity.nvo987.us/.well-known/nodeinfo">
-https://identity.nvo987.us/.well-known/nodeinfo
+NodeInfo infrastructure metadata
 </a>
-– infrastructure metadata document
 </li>
 
 <li>
 <a href="https://identity.nvo987.us/.well-known/openid-configuration">
-https://identity.nvo987.us/.well-known/openid-configuration
+OpenID configuration
 </a>
-– OpenID Connect discovery configuration
 </li>
 
 <li>
 <a href="https://identity.nvo987.us/.well-known/security.txt">
-https://identity.nvo987.us/.well-known/security.txt
+Security contact information
 </a>
-– security contact information
 </li>
 
 </ul>
 
-<p>
-These documents allow identity providers,
-federated networks,
-and automated systems
-to recognize and integrate the identity.
-</p>
-
 </section>
 
 
-<section>
 
-<h5>Cryptographic Verification</h5>
+<section class="content-block">
+
+<h2>Cryptographic Verification</h2>
 
 <p>
-The authenticity of the identity
-is based on public cryptographic keys.
+The authenticity of the identity is based on public cryptographic keys.
 </p>
 
 <p>
-The primary public key is available at:
-</p>
 
-<p>
 <a href="https://identity.nvo987.us/keys/identity-public.pem">
 https://identity.nvo987.us/keys/identity-public.pem
 </a>
+
 </p>
 
 <p>
-Metadata about the key can be found in the following document:
-</p>
 
-<p>
 <a href="https://identity.nvo987.us/keys/identity-key.json">
 https://identity.nvo987.us/keys/identity-key.json
 </a>
-</p>
 
-<p>
-These files enable external systems
-to verify digital signatures
-and documents associated with the identity.
 </p>
 
 </section>
 
 
-<section>
 
-<h6>Digitally Signed Documents</h6>
+<section class="content-block">
 
-<p>
-The infrastructure publishes several digitally signed
-documents that cryptographically confirm
-statements related to the identity
-and the research infrastructure.
-</p>
+<h2>Digitally Signed Documents</h2>
 
 <ul>
 
 <li>
 <a href="https://identity.nvo987.us/signed/identity-statement.json">
-https://identity.nvo987.us/signed/identity-statement.json
+identity-statement.json
 </a>
-– identity declaration
 </li>
 
 <li>
 <a href="https://identity.nvo987.us/signed/research-statement.json">
-https://identity.nvo987.us/signed/research-statement.json
+research-statement.json
 </a>
-– description of research activity
 </li>
 
 <li>
 <a href="https://identity.nvo987.us/signed/knowledge-graph-signature.json">
-https://identity.nvo987.us/signed/knowledge-graph-signature.json
+knowledge-graph-signature.json
 </a>
-– knowledge graph integrity signature
 </li>
 
 </ul>
@@ -461,60 +405,28 @@ https://identity.nvo987.us/signed/knowledge-graph-signature.json
 </section>
 
 
-<section>
 
-<h7>Research Infrastructure Domains</h7>
+<section class="content-block">
 
-<p>
-The identity node connects a multi-domain
-research infrastructure
-under a shared decentralized identity.
-</p>
+<h2>Research Infrastructure Domains</h2>
 
 <ul>
 
-<li>
-<a href="https://nvo987.us">
-https://nvo987.us
-</a>
-– the main website of the research network
-</li>
-
-<li>
-<a href="https://knowledge.nvo987.us">
-https://knowledge.nvo987.us
-</a>
-– knowledge graph and semantic infrastructure
-</li>
-
-<li>
-<a href="https://lab.nvo987.us">
-https://lab.nvo987.us
-</a>
-– experimental research and development environment
-</li>
-
-<li>
-<a href="https://art.nvo987.us">
-https://art.nvo987.us
-</a>
-– artistic projects and visual research
-</li>
-
-<li>
-<a href="https://social.nvo987.us">
-https://social.nvo987.us
-</a>
-– federated social infrastructure
-</li>
+<li><a href="https://nvo987.us">https://nvo987.us</a></li>
+<li><a href="https://knowledge.nvo987.us">https://knowledge.nvo987.us</a></li>
+<li><a href="https://lab.nvo987.us">https://lab.nvo987.us</a></li>
+<li><a href="https://art.nvo987.us">https://art.nvo987.us</a></li>
+<li><a href="https://social.nvo987.us">https://social.nvo987.us</a></li>
 
 </ul>
 
 </section>
 
-<section>
 
-<h3>About the Researcher</h3>
+
+<section class="content-block">
+
+<h2>About the Researcher</h2>
 
 <div class="researcher-card">
 
@@ -526,7 +438,7 @@ class="researcher-photo"
 
 <div class="researcher-info">
 
-<h2>Nicholas Van-Orton</h2>
+<h3>Nicholas Van-Orton</h3>
 
 <p>
 Independent researcher working on decentralized digital identity,
@@ -536,13 +448,15 @@ Founder of the research initiative
 </p>
 
 <p>
-Machine-readable identity profile:
-</p>
 
-<p>
+Machine-readable identity profile:
+
+<br>
+
 <a href="https://identity.nvo987.us/profile/person.jsonld">
 https://identity.nvo987.us/profile/person.jsonld
 </a>
+
 </p>
 
 </div>
@@ -552,15 +466,10 @@ https://identity.nvo987.us/profile/person.jsonld
 </section>
 
 
-<section>
 
-<h3>Federated and Decentralized Networks</h3>
+<section class="content-block">
 
-<p>
-The identity is connected to multiple
-decentralized and federated
-social platforms.
-</p>
+<h2>Federated and Decentralized Networks</h2>
 
 <ul>
 
@@ -586,27 +495,35 @@ https://www.linkedin.com/in/nvo987
 
 </section>
 
+
 </main>
 
-<footer>
 
-<p>
-© NVO987
-</p>
+<footer class="site-footer">
+
+<p>© NVO987</p>
 
 <p>
 Identity node for the decentralized identifier
-<strong>did:web:identity.nvo987.us</strong>.
+<strong>did:web:identity.nvo987.us</strong>
 </p>
 
 <p>
+
 Infrastructure root:
-<a href="https://identity.nvo987.us">identity.nvo987.us</a>
+
+<a href="https://identity.nvo987.us">
+identity.nvo987.us
+</a>
+
 </p>
 
 </footer>
 
+
 </body>
+
+
 </html>
 
 
