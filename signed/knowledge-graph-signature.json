@@ -22,6 +22,6 @@
    "verificationMethod": "did:web:identity.nvo987.us#identity-key",
    "created": "2026-03-21T00:00:00Z",
    "proofPurpose": "assertionMethod",
-   "jws": ""
+   "jws": "mBYsjJ0INOmh2nIYTPXZPPkBAcjdctjW--y6oo3KgpjIwX8TLNS5q-PDC18tV3Bd6A7B43aOP3z5p32biD7sDw=="
  }
 }
