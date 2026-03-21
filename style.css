@@ -14,8 +14,8 @@
 
 body {
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  background: #6b3f2a;
-  color: #ffffff;
+  background: #ffffff;
+  color: #222222;
   line-height: 1.6;
 
   min-height: 100vh;
@@ -43,9 +43,10 @@ body {
 }
 
 .hero-overlay {
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(0, 0, 0, 0.55);
   padding: 22px 32px;
   border-radius: 14px;
+  color: #ffffff;
 }
 
 .hero h1 {
@@ -69,12 +70,11 @@ body {
 
   padding: 14px 0;
 
-  background: rgba(0,0,0,0.25);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  background: #6b3f2a;
 }
 
 .main-menu a {
-  color: #ffe6d5;
+  color: #ffffff;
   text-decoration: none;
 
   font-weight: 500;
@@ -87,8 +87,7 @@ body {
 }
 
 .main-menu a:hover {
-  background: rgba(255,255,255,0.08);
-  color: #ffffff;
+  background: rgba(255,255,255,0.15);
 }
 
 /* =========================
@@ -114,17 +113,16 @@ section {
   margin-bottom: 52px;
   padding: 26px 28px;
 
-  background: rgba(255,255,255,0.06);
+  background: #6b3f2a;
+  color: #ffffff;
+
   border-radius: 14px;
 
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid rgba(0,0,0,0.08);
 
-  /* ARANY CSÍK */
   border-left: 4px solid #d4af37;
 
-  box-shadow: 0 10px 22px rgba(0,0,0,0.18);
-
-  backdrop-filter: blur(2px);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.15);
 }
 
 /* =========================
@@ -152,7 +150,7 @@ h1 {
 h2 {
   font-size: 1.65rem;
   margin-bottom: 14px;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
   padding-bottom: 6px;
 }
 
@@ -186,6 +184,35 @@ a {
 a:hover {
   color: #ffffff;
   text-decoration: underline;
+}
+
+/* =========================
+   RESEARCHER CARD
+========================= */
+
+.researcher-card {
+
+  display: flex;
+  gap: 24px;
+  align-items: center;
+
+}
+
+.researcher-photo {
+
+  width: 140px;
+  height: 140px;
+
+  border-radius: 12px;
+
+  object-fit: cover;
+
+  border: 2px solid rgba(255,255,255,0.4);
+
+}
+
+.researcher-info {
+  flex: 1;
 }
 
 /* =========================
@@ -223,6 +250,17 @@ a:hover {
   p {
     line-height: 1.55;
   }
+
+  .researcher-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .researcher-photo {
+    width: 120px;
+    height: 120px;
+  }
+
 }
 
 /* =========================
@@ -234,4 +272,5 @@ footer {
   margin-top: 1.5rem;
   opacity: 0.85;
   font-size: 0.95rem;
-     }
+  color: #555;
+   }
