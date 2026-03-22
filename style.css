@@ -198,6 +198,25 @@ margin-bottom:14px;
 
 
 /* =========================
+LIST FIX
+========================= */
+
+ul{
+
+margin-top:10px;
+margin-bottom:0;
+padding-left:22px;
+
+}
+
+li{
+
+margin-bottom:6px;
+
+}
+
+
+/* =========================
 LINKS
 ========================= */
 
@@ -400,4 +419,4 @@ height:120px;
 
 }
 
-}
+  }
