@@ -1,0 +1,32 @@
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix schema: <https://schema.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+<https://identity.nvo987.us/#nicholas-van-orton>
+    a foaf:Person ;
+    foaf:name "Nicholas Van-Orton" ;
+    foaf:givenName "Nicholas" ;
+    foaf:familyName "Van-Orton" ;
+    foaf:homepage <https://identity.nvo987.us> ;
+    foaf:mbox <mailto:contact@nvo987.fr> ;
+
+    schema:jobTitle "Independent Researcher" ;
+    schema:knowsAbout "Art history" ,
+                      "Semantic web" ,
+                      "Decentralized identity" ,
+                      "Knowledge graph" ;
+
+    owl:sameAs <https://orcid.org/0009-0007-4628-1871> ;
+    owl:sameAs <https://isni.org/isni/0000000529640885> ;
+    owl:sameAs <https://www.wikidata.org/wiki/Q137675227> .
+
+<https://nvo987.fr>
+    a foaf:Organization ;
+    foaf:name "NVO987 – Culture Visuelle Moderne et Contemporaine" ;
+    foaf:homepage <https://nvo987.fr> .
+
+<https://doi.org/10.2139/ssrn.6007654>
+    a schema:ScholarlyArticle ;
+    schema:name "Color as a Generative Principle in the Work of Sonia Delaunay" ;
+    schema:author <https://identity.nvo987.us/#nicholas-van-orton> .
