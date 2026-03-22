@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rdf:RDF
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:foaf="http://xmlns.com/foaf/0.1/"
+ xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<foaf:Person rdf:about="https://identity.nvo987.us#me">
+
+<foaf:name>Nicholas Van-Orton</foaf:name>
+<foaf:givenName>Nicholas</foaf:givenName>
+<foaf:familyName>Van-Orton</foaf:familyName>
+
+<foaf:img rdf:resource="https://identity.nvo987.us/profile/nicholas-van-orton.jpg"/>
+
+<foaf:homepage rdf:resource="https://identity.nvo987.us"/>
+<foaf:workplaceHomepage rdf:resource="https://nvo987.fr"/>
+
+<foaf:mbox rdf:resource="mailto:nvo@nvo987.us"/>
+
+<foaf:title>Independent Researcher</foaf:title>
+
+<rdfs:comment>
+Nicholas Van-Orton is an independent researcher and project manager working on decentralized digital identity,
+the semantic web, knowledge graphs, and digital humanities. His research explores the relationship between
+autonomous computational systems and human interpretive capacity through the model of the Civilizational
+Interpretive Ratio. He is also the founder and president of the Paris-based cultural and research association
+NVO987 – Culture Visuelle Moderne et Contemporaine.
+</rdfs:comment>
+
+<foaf:based_near>
+<foaf:SpatialThing>
+<rdfs:label>Paris, France</rdfs:label>
+</foaf:SpatialThing>
+</foaf:based_near>
+
+<foaf:interest>Decentralized Digital Identity</foaf:interest>
+<foaf:interest>Semantic Web</foaf:interest>
+<foaf:interest>Knowledge Graphs</foaf:interest>
+<foaf:interest>Digital Humanities</foaf:interest>
+<foaf:interest>Modern and Contemporary Visual Culture</foaf:interest>
+
+<foaf:member>
+<foaf:Organization>
+<foaf:name>NVO987 – Culture Visuelle Moderne et Contemporaine</foaf:name>
+<foaf:homepage rdf:resource="https://nvo987.fr"/>
+</foaf:Organization>
+</foaf:member>
+
+<!-- Accounts -->
+
+<foaf:account>
+<foaf:OnlineAccount>
+<foaf:accountServiceHomepage rdf:resource="https://mastodon.social"/>
+<foaf:accountName>nvo987</foaf:accountName>
+</foaf:OnlineAccount>
+</foaf:account>
+
+<foaf:account>
+<foaf:OnlineAccount>
+<foaf:accountServiceHomepage rdf:resource="https://bsky.app"/>
+<foaf:accountName>nvo987.us</foaf:accountName>
+</foaf:OnlineAccount>
+</foaf:account>
+
+<!-- External identifiers -->
+
+<foaf:page rdf:resource="https://orcid.org/0009-0007-4628-1871"/>
+<foaf:page rdf:resource="https://isni.org/isni/0000000529640885"/>
+<foaf:page rdf:resource="https://www.wikidata.org/wiki/Q137675227"/>
+
+<!-- Domains -->
+
+<foaf:page rdf:resource="https://nvo987.us"/>
+<foaf:page rdf:resource="https://nvo987.fr"/>
+<foaf:page rdf:resource="https://didweb3.org"/>
+
+<!-- Decentralized Identifiers -->
+
+<foaf:page rdf:resource="https://identity.nvo987.us/.well-known/did.json"/>
+<foaf:page rdf:resource="https://plc.directory/did:plc:r3vfu3t4prpmm6nswgctlbz"/>
+
+<!-- Publication -->
+
+<foaf:publications>
+<rdf:Description>
+<dc:title>Color as a Generative Principle in the Work of Sonia Delaunay</dc:title>
+<dc:identifier>https://doi.org/10.2139/ssrn.6007654</dc:identifier>
+</rdf:Description>
+</foaf:publications>
+
+</foaf:Person>
+
+</rdf:RDF>
