@@ -253,13 +253,35 @@ color:#ffd700;
 
 text-decoration:none;
 
+/* fontos mobil fix */
+
 word-break:break-word;
+overflow-wrap:anywhere;
 
 }
 
 a:hover{
 
 text-decoration:underline;
+
+}
+
+
+/* =========================
+MONOSPACE / IDENTIFIERS
+(DID, hashes stb.)
+========================= */
+
+code,
+.identifier{
+
+font-family:monospace;
+
+word-break:break-all;
+
+overflow-wrap:anywhere;
+
+font-size:0.9rem;
 
 }
 
@@ -294,7 +316,10 @@ font-size:0.9rem;
 
 border-left:3px solid #ffd700;
 
+/* fontos */
+
 word-break:break-all;
+overflow-wrap:anywhere;
 
 }
 
@@ -317,9 +342,12 @@ font-size:0.85rem;
 
 border:1px solid #ffd700;
 
-word-break:break-all;
-
 margin-top:14px;
+
+/* legfontosabb javítás */
+
+word-break:break-all;
+overflow-wrap:anywhere;
 
 }
 
