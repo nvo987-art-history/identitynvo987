@@ -1,9 +1,11 @@
 {
  "@context": [
-   "https://www.w3.org/ns/did/v1"
+  "https://www.w3.org/ns/did/v1"
  ],
 
  "id": "did:ethr:mainnet:0xCab3Cee177B92fA38dFC16dA8C8D3e767A2bDA3a",
+
+ "brand": "NVO987",
 
  "verificationMethod": [
   {
@@ -16,5 +18,13 @@
 
  "authentication": [
   "did:ethr:mainnet:0xCab3Cee177B92fA38dFC16dA8C8D3e767A2bDA3a#controller"
+ ],
+
+ "service": [
+  {
+   "id": "#identity-node",
+   "type": "IdentityNode",
+   "serviceEndpoint": "https://identity.nvo987.us"
+  }
  ]
 }
