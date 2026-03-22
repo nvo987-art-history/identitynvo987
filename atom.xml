@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+<title>NVO987 Identity and Research Feed</title>
+
+<id>https://identity.nvo987.us</id>
+
+<link href="https://identity.nvo987.us/atom.xml" rel="self"/>
+
+<link href="https://identity.nvo987.us"/>
+
+<updated>2026-03-22T10:00:00Z</updated>
+
+<author>
+<name>Nicholas Van-Orton</name>
+<uri>https://identity.nvo987.us</uri>
+<email>nvo@nvo987.us</email>
+</author>
+
+<subtitle>
+Identity and research updates related to decentralized identity,
+semantic web technologies, and modern and contemporary visual culture.
+</subtitle>
+
+<!-- DID identity -->
+
+<entry>
+
+<title>Decentralized Identity (did:web)</title>
+
+<id>did:web:identity.nvo987.us</id>
+
+<link href="https://identity.nvo987.us/.well-known/did.json"/>
+
+<updated>2026-03-21T21:26:00Z</updated>
+
+<summary>
+Primary decentralized identifier associated with Nicholas Van-Orton.
+</summary>
+
+</entry>
+
+<!-- Ethereum DID -->
+
+<entry>
+
+<title>Decentralized Identity (Ethereum DID)</title>
+
+<id>did:ethr:mainnet:0xCab3Cee177B92fA38dFC16dA8C8D3e767A2bDA3a</id>
+
+<link href="https://identity.nvo987.us/linked-identities/ethr/did.json"/>
+
+<updated>2026-03-21T21:26:00Z</updated>
+
+<summary>
+Ethereum-based decentralized identity associated with the NVO987 identity infrastructure.
+</summary>
+
+</entry>
+
+<!-- Bluesky DID -->
+
+<entry>
+
+<title>Decentralized Identity (AT Protocol)</title>
+
+<id>did:plc:r3vfu3t4prpmm6nswgctlbz</id>
+
+<link href="https://plc.directory/did:plc:r3vfu3t4prpmm6nswgctlbz"/>
+
+<updated>2026-03-21T21:26:00Z</updated>
+
+<summary>
+AT Protocol decentralized identifier used by the Bluesky network.
+</summary>
+
+</entry>
+
+<!-- Research project -->
+
+<entry>
+
+<title>Civilizational Interpretive Ratio</title>
+
+<id>https://identity.nvo987.us/research/civilizational-interpretive-ratio</id>
+
+<link href="https://identity.nvo987.us"/>
+
+<updated>2026-03-21T21:26:00Z</updated>
+
+<summary>
+Research project examining the relationship between autonomous systems
+and human interpretive capacity.
+</summary>
+
+</entry>
+
+<!-- Publication -->
+
+<entry>
+
+<title>Color as a Generative Principle in the Work of Sonia Delaunay</title>
+
+<id>https://doi.org/10.2139/ssrn.6007654</id>
+
+<link href="https://doi.org/10.2139/ssrn.6007654"/>
+
+<updated>2026-03-21T21:26:00Z</updated>
+
+<summary>
+Scholarly article exploring the generative role of color
+in the work of Sonia Delaunay.
+</summary>
+
+</entry>
+
+<!-- Organization -->
+
+<entry>
+
+<title>NVO987 – Culture Visuelle Moderne et Contemporaine</title>
+
+<id>https://nvo987.fr</id>
+
+<link href="https://nvo987.fr"/>
+
+<updated>2026-03-21T21:26:00Z</updated>
+
+<summary>
+Cultural and research association founded by Nicholas Van-Orton
+based in Paris, France.
+</summary>
+
+</entry>
+
+</feed>
