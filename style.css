@@ -253,8 +253,6 @@ color:#ffd700;
 
 text-decoration:none;
 
-/* fontos mobil fix */
-
 word-break:break-word;
 overflow-wrap:anywhere;
 
@@ -269,7 +267,6 @@ text-decoration:underline;
 
 /* =========================
 MONOSPACE / IDENTIFIERS
-(DID, hashes stb.)
 ========================= */
 
 code,
@@ -316,8 +313,6 @@ font-size:0.9rem;
 
 border-left:3px solid #ffd700;
 
-/* fontos */
-
 word-break:break-all;
 overflow-wrap:anywhere;
 
@@ -342,12 +337,10 @@ font-size:0.85rem;
 
 border:1px solid #ffd700;
 
-margin-top:14px;
-
-/* legfontosabb javítás */
-
 word-break:break-all;
 overflow-wrap:anywhere;
+
+margin-top:14px;
 
 }
 
@@ -358,21 +351,16 @@ RESEARCHER CARD
 
 .researcher-card{
 
-display:flex;
-
-gap:20px;
-
-flex-wrap:wrap;
-
-align-items:flex-start;
+position:relative;
 
 }
 
 .researcher-photo{
 
-width:140px;
+float:left;
 
-height:140px;
+width:150px;
+height:150px;
 
 object-fit:cover;
 
@@ -380,13 +368,14 @@ border-radius:8px;
 
 border:2px solid #ffd700;
 
+margin-right:20px;
+margin-bottom:12px;
+
 }
 
 .researcher-info{
 
-flex:1;
-
-min-width:220px;
+display:block;
 
 }
 
@@ -456,22 +445,24 @@ padding:24px;
 
 }
 
-.researcher-card{
+.researcher-photo{
 
-flex-direction:column;
+float:none;
 
-align-items:center;
+display:block;
+
+margin:auto;
+margin-bottom:16px;
+
+width:120px;
+height:120px;
+
+}
+
+.researcher-info{
 
 text-align:center;
 
 }
 
-.researcher-photo{
-
-width:120px;
-
-height:120px;
-
 }
-
-  }
