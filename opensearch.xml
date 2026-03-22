@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+
+<ShortName>NVO987 Identity</ShortName>
+
+<Description>
+Search the identity and research infrastructure of Nicholas Van-Orton,
+including decentralized identity resources, semantic web profiles,
+and research metadata.
+</Description>
+
+<Tags>
+identity research decentralized semantic-web did knowledge-graph
+</Tags>
+
+<Contact>
+nvo@nvo987.us
+</Contact>
+
+<Url
+ type="text/html"
+ method="get"
+ template="https://identity.nvo987.us/?q={searchTerms}" />
+
+<Url
+ type="application/rss+xml"
+ rel="results"
+ template="https://identity.nvo987.us/rss.xml" />
+
+<Url
+ type="application/atom+xml"
+ rel="results"
+ template="https://identity.nvo987.us/atom.xml" />
+
+<Image
+ height="64"
+ width="64"
+ type="image/png">
+https://identity.nvo987.us/favicon.png
+</Image>
+
+<Developer>
+Nicholas Van-Orton
+</Developer>
+
+<Attribution>
+NVO987 – Culture Visuelle Moderne et Contemporaine
+</Attribution>
+
+<SyndicationRight>open</SyndicationRight>
+
+<AdultContent>false</AdultContent>
+
+<Language>en-us</Language>
+
+</OpenSearchDescription>
