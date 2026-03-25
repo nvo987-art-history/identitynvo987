@@ -7,7 +7,6 @@
 <id>https://identity.nvo987.us</id>
 
 <link href="https://identity.nvo987.us/atom.xml" rel="self"/>
-
 <link href="https://identity.nvo987.us"/>
 
 <updated>2026-03-22T10:00:00Z</updated>
@@ -41,57 +40,22 @@ Primary decentralized identifier associated with Nicholas Van-Orton.
 
 </entry>
 
-<!-- Ethereum DID -->
-
-<entry>
-
-<title>Decentralized Identity (Ethereum DID)</title>
-
-<id>did:ethr:mainnet:0xCab3Cee177B92fA38dFC16dA8C8D3e767A2bDA3a</id>
-
-<link href="https://identity.nvo987.us/linked-identities/ethr/did.json"/>
-
-<updated>2026-03-21T21:26:00Z</updated>
-
-<summary>
-Ethereum-based decentralized identity associated with the NVO987 identity infrastructure.
-</summary>
-
-</entry>
-
-<!-- Bluesky DID -->
-
-<entry>
-
-<title>Decentralized Identity (AT Protocol)</title>
-
-<id>did:plc:r3vfu3t4prpmm6nswgctlbz</id>
-
-<link href="https://plc.directory/did:plc:r3vfu3t4prpmm6nswgctlbz"/>
-
-<updated>2026-03-21T21:26:00Z</updated>
-
-<summary>
-AT Protocol decentralized identifier used by the Bluesky network.
-</summary>
-
-</entry>
-
 <!-- Research project -->
 
 <entry>
 
 <title>Civilizational Interpretive Ratio</title>
 
-<id>https://identity.nvo987.us/research/civilizational-interpretive-ratio</id>
+<id>https://knowledge.nvo987.us/documents/interdisciplinary-foundation-v2.pdf</id>
 
-<link href="https://identity.nvo987.us"/>
+<link href="https://knowledge.nvo987.us/documents/interdisciplinary-foundation-v2.pdf"/>
 
 <updated>2026-03-21T21:26:00Z</updated>
 
 <summary>
 Research project examining the relationship between autonomous systems
-and human interpretive capacity.
+and human interpretive capacity. Full document available via the NVO987
+knowledge repository.
 </summary>
 
 </entry>
