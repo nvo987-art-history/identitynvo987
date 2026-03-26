@@ -6,7 +6,10 @@
   "linked_dids": [
     {
       "id": "https://identity.nvo987.us/.well-known/did-configuration.json#domain-linkage",
-      "type": ["VerifiableCredential", "DomainLinkageCredential"],
+      "type": [
+        "VerifiableCredential",
+        "DomainLinkageCredential"
+      ],
       "issuer": "did:web:identity.nvo987.us",
       "issuanceDate": "2026-03-19T00:00:00Z",
       "credentialSubject": {
@@ -18,7 +21,7 @@
         "created": "2026-03-19T00:00:00Z",
         "verificationMethod": "did:web:identity.nvo987.us#identity-key",
         "proofPurpose": "assertionMethod",
-        "proofValue": "5CqEngu99pRyL73WygTAw6Ku8YaiJCZqrk1mFKmzyKFg25QiyJEVPL6y3xcgztNkkvNQLPUKKoDP7EnuD3Dbgueb"
+        "proofValue": "WChYLPSBHMJCj+GxgFuu5YuIfFOGMfUbJ3p7ROtZ2jscdGeAR45rOfmkIEKUKwb2HGthsoT1KK9ZJJse7riIAw=="
       }
     }
   ]
