@@ -1,0 +1,14 @@
+{
+  "@context": ["https://www.w3.org/2018/credentials/v1"],
+  "type": ["VerifiableCredential", "ResearcherCredential"],
+  "issuer": "did:web:identity.nvo987.us",
+  "credentialSubject": {
+    "id": "did:web:identity.nvo987.us",
+    "role": "Independent Researcher",
+    "fields": [
+      "Decentralized identity",
+      "Semantic web",
+      "AI"
+    ]
+  }
+}
