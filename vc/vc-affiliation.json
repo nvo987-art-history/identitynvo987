@@ -1,0 +1,9 @@
+{
+  "@context": ["https://www.w3.org/2018/credentials/v1"],
+  "type": ["VerifiableCredential", "AffiliationCredential"],
+  "issuer": "did:web:identity.nvo987.us",
+  "credentialSubject": {
+    "id": "did:web:identity.nvo987.us",
+    "organization": "NVO987"
+  }
+}
