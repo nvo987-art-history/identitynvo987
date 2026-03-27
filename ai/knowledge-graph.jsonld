@@ -1,24 +1,96 @@
 {
-  "@context": "https://identity.nvo987.us/profile/context.jsonld",
-  "@type": "Person",
-  "name": "Nicholas Van-Orton",
-
-  "knowsAbout": [
-    "Decentralized Identity",
-    "Semantic Web",
-    "Knowledge Representation"
+  "@context": [
+    "https://schema.org",
+    "https://identity.nvo987.us/context.jsonld"
   ],
+  "@graph": [
 
-  "hasPart": [
     {
-      "@type": "CreativeWork",
-      "name": "Publications",
-      "url": "https://identity.nvo987.us/data/publications.json"
+      "@id": "https://identity.nvo987.us/identity/person",
+      "@type": "Person",
+      "name": "Nicholas Van-Orton",
+      "url": "https://identity.nvo987.us",
+      "sameAs": [
+        "https://mastodon.social/@nvo987",
+        "https://bsky.app/profile/nvo987.us",
+        "https://www.linkedin.com/in/nvo987"
+      ],
+      "knowsAbout": [
+        "Decentralized identity",
+        "Semantic web",
+        "Knowledge representation",
+        "AI systems",
+        "Blockchain timestamping"
+      ],
+      "affiliation": {
+        "@id": "https://identity.nvo987.us/identity/brand"
+      }
     },
+
     {
+      "@id": "https://identity.nvo987.us/identity/brand",
+      "@type": "Organization",
+      "name": "NVO987 – Culture Visuelle Moderne et Contemporaine",
+      "url": "https://identity.nvo987.us"
+    },
+
+    {
+      "@id": "https://identity.nvo987.us/research",
       "@type": "ResearchProject",
-      "name": "Projects",
-      "url": "https://identity.nvo987.us/data/projects.json"
+      "name": "Civilizational Interpretive Ratio",
+      "description": "A research model examining the relationship between system complexity and human interpretive capacity.",
+      "creator": {
+        "@id": "https://identity.nvo987.us/identity/person"
+      }
+    },
+
+    {
+      "@id": "https://identity.nvo987.us/data/publications.json",
+      "@type": "Dataset",
+      "name": "Publications Dataset",
+      "creator": {
+        "@id": "https://identity.nvo987.us/identity/person"
+      }
+    },
+
+    {
+      "@id": "https://identity.nvo987.us/data/projects.json",
+      "@type": "Dataset",
+      "name": "Research Projects Dataset",
+      "creator": {
+        "@id": "https://identity.nvo987.us/identity/person"
+      }
+    },
+
+    {
+      "@id": "https://identity.nvo987.us/ai",
+      "@type": "Service",
+      "name": "NVO987 AI Agent Service",
+      "provider": {
+        "@id": "https://identity.nvo987.us/identity/brand"
+      },
+      "creator": {
+        "@id": "https://identity.nvo987.us/identity/person"
+      },
+      "hasPart": [
+        {
+          "@id": "https://identity.nvo987.us/ai/agents.jsonld"
+        },
+        {
+          "@id": "https://identity.nvo987.us/ai/capabilities.jsonld"
+        }
+      ]
+    },
+
+    {
+      "@id": "https://identity.nvo987.us/profile/person.jsonld",
+      "@type": "CreativeWork",
+      "name": "Signed Identity Document",
+      "encodingFormat": "application/ld+json",
+      "creator": {
+        "@id": "https://identity.nvo987.us/identity/person"
+      }
     }
+
   ]
 }
