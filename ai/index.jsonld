@@ -1,17 +1,63 @@
 {
-  "@context": "https://schema.org",
-  "id": "https://identity.nvo987.us/ai",
-  "type": "Service",
+  "@context": [
+    "https://schema.org",
+    "https://identity.nvo987.us/context.jsonld"
+  ],
+  "@id": "https://identity.nvo987.us/ai",
+  "@type": "Service",
+
   "name": "NVO987 AI Agent Service",
+  "description": "Decentralized AI agent infrastructure connected to the NVO987 identity system, supporting research, semantic knowledge representation, and autonomous agents.",
+
   "provider": {
-    "id": "https://identity.nvo987.us/identity/brand"
+    "@id": "https://identity.nvo987.us/identity/brand"
   },
+
   "creator": {
-    "id": "https://identity.nvo987.us/identity/person"
+    "@id": "https://identity.nvo987.us/identity/person"
   },
+
   "identifier": "did:web:identity.nvo987.us",
+  "url": "https://identity.nvo987.us/ai",
+
+  "sameAs": [
+    "https://identity.nvo987.us"
+  ],
+
   "hasPart": [
-    "https://identity.nvo987.us/ai/agents.jsonld",
-    "https://identity.nvo987.us/ai/capabilities.jsonld"
-  ]
+    {
+      "@id": "https://identity.nvo987.us/ai/agents.jsonld",
+      "@type": "Dataset",
+      "name": "AI Agents"
+    },
+    {
+      "@id": "https://identity.nvo987.us/ai/capabilities.jsonld",
+      "@type": "Dataset",
+      "name": "AI Capabilities"
+    }
+  ],
+
+  "subjectOf": [
+    {
+      "@id": "https://identity.nvo987.us/ai/profile.json",
+      "@type": "Dataset",
+      "name": "AI Profile"
+    },
+    {
+      "@id": "https://identity.nvo987.us/ai/research.json",
+      "@type": "Dataset",
+      "name": "AI Research Data"
+    },
+    {
+      "@id": "https://identity.nvo987.us/ai/knowledge-graph.jsonld",
+      "@type": "Dataset",
+      "name": "Knowledge Graph"
+    }
+  ],
+
+  "additionalType": "https://w3id.org/ai/service",
+
+  "isPartOf": {
+    "@id": "https://identity.nvo987.us"
+  }
 }
