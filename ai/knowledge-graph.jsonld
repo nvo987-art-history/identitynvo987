@@ -1,0 +1,24 @@
+{
+  "@context": "https://identity.nvo987.us/profile/context.jsonld",
+  "@type": "Person",
+  "name": "Nicholas Van-Orton",
+
+  "knowsAbout": [
+    "Decentralized Identity",
+    "Semantic Web",
+    "Knowledge Representation"
+  ],
+
+  "hasPart": [
+    {
+      "@type": "CreativeWork",
+      "name": "Publications",
+      "url": "https://identity.nvo987.us/data/publications.json"
+    },
+    {
+      "@type": "ResearchProject",
+      "name": "Projects",
+      "url": "https://identity.nvo987.us/data/projects.json"
+    }
+  ]
+}
