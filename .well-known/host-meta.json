@@ -1,1 +1,9 @@
-
+{
+  "links": [
+    {
+      "rel": "lrdd",
+      "type": "application/jrd+json",
+      "template": "https://identity.nvo987.us/.well-known/webfinger?resource={uri}"
+    }
+  ]
+}
