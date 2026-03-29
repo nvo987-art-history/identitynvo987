@@ -1,8 +1,0 @@
-{
-  "links": [
-    {
-      "rel": "http://nodeinfo.diaspora.software/ns/schema/2.1",
-      "href": "https://identity.nvo987.us/nodeinfo/2.1"
-    }
-  ]
-} 
