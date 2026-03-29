@@ -1,36 +1,67 @@
-/* TEAM */
+# humans.txt
+# https://lab.nvo987.us
 
-Name: Nicholas Van-Orton
-Role: Researcher / Digital Humanist
-Brand: NVO987
-Email: nvo@nvo987.us
-DID: did:web:identity.nvo987.us
-Location: Internet
+/* ==================================================
+   NV0987 Lab – Human Contributors
+   ================================================== */
 
-/* IDENTITY */
+Author: Nicholas Van-Orton
+Role: Independent Researcher
+Focus: Relational Color · Perception · AI Image Generation
 
-Domain: https://identity.nvo987.us
-Primary Website: https://nvo987.us
-Knowledge Platform: https://knowledge.nvo987.us
-Research Lab: https://lab.nvo987.us
-Art Platform: https://art.nvo987.us
-Social Hub: https://social.nvo987.us
+Contact:
+nvo@nvo987.us
+contact@nvo987.fr
 
-/* SOCIAL */
+Identity:
+did:web:identity.nvo987.us
+https://identity.nvo987.us
 
-Mastodon: https://mastodon.social/@nvo987
-Bluesky: https://bsky.app/profile/nvo987.us
-Substack: https://nvo987.substack.com
+Location:
+Paris / International
 
-/* SCHOLARLY */
+/* ==================================================
+   PROJECT
+   ================================================== */
 
-ORCID: https://orcid.org/0009-0007-4628-1871
-ISNI: https://isni.org/isni/0000000529640885
-Wikidata: https://www.wikidata.org/wiki/Q137675227
+Project: NV0987 Lab
+Type: Experimental Research Node
 
-/* TECH */
+Description:
+Independent research environment exploring:
+- perceptual color systems
+- AI-generated imagery
+- semantic web infrastructure
+- decentralized identity (DID)
+- machine-readable knowledge systems
 
-Identity System: Decentralized Identity (DID)
-Method: did:web
-Root DID: did:web:identity.nvo987.us
-Repository: https://github.com/nvo987/identity.nvo987.us
+/* ==================================================
+   NETWORK
+   ================================================== */
+
+Main: https://nvo987.us
+Lab: https://lab.nvo987.us
+Identity: https://identity.nvo987.us
+Knowledge: https://knowledge.nvo987.us
+Art: https://art.nvo987.us
+Social: https://social.nvo987.us
+Association: https://nvo987.fr
+
+/* ==================================================
+   TECHNOLOGY
+   ================================================== */
+
+Stack:
+- HTML / CSS
+- GitHub Pages
+- Dynadot DNS
+- JSON-LD / Schema.org
+- DID (did:web)
+
+/* ==================================================
+   NOTE
+   ================================================== */
+
+This project is part of a decentralized research infrastructure.
+It operates as an independent and experimental system,
+outside traditional institutional frameworks.
