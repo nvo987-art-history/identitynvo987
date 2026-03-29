@@ -1,15 +1,20 @@
 {
-  "subject": "https://identity.nvo987.us",
+  "subject": "https://lab.nvo987.us",
+
   "links": [
     {
-      "rel": "self",
-      "type": "application/did+json",
-      "href": "https://identity.nvo987.us/did.json"
+      "rel": "lrdd",
+      "type": "application/jrd+json",
+      "template": "https://lab.nvo987.us/.well-known/webfinger?resource={uri}"
     },
     {
       "rel": "lrdd",
-      "type": "application/json",
-      "template": "https://identity.nvo987.us/.well-known/webfinger?resource={uri}"
+      "type": "application/xrd+xml",
+      "template": "https://lab.nvo987.us/.well-known/webfinger?resource={uri}"
+    },
+    {
+      "rel": "self",
+      "href": "https://identity.nvo987.us"
     }
   ]
 }
