@@ -70,23 +70,23 @@ box-shadow:0 20px 60px rgba(0,0,0,0.25);
 
 
 /* =========================
-HERO TEXT ✅ FIXED CONTRAST
+HERO TEXT ✅ FIXED GLASS + BETTER CONTRAST
 ========================= */
 
 .hero-overlay{
 
 max-width:640px;
 
-/* LIGHTER GLASS (but visible) */
-background:rgba(255,255,255,0.35);
+/* erősebb, de még világos glass */
+background:rgba(255,255,255,0.22);
 
-backdrop-filter:blur(10px);
--webkit-backdrop-filter:blur(10px);
+backdrop-filter:blur(14px) saturate(120%);
+-webkit-backdrop-filter:blur(14px) saturate(120%);
 
 border-radius:12px;
 padding:20px 24px;
 
-border:1px solid rgba(255,255,255,0.35);
+border:1px solid rgba(255,255,255,0.45);
 
 }
 
@@ -101,14 +101,15 @@ font-size:2.7rem;
 
 font-weight:700;
 
-color:#7b2f2f;
+/* mélyebb bordó */
+color:#5a1f1f;
 
 letter-spacing:0.5px;
 
 margin-bottom:16px;
 
-/* STRONGER CONTRAST */
-text-shadow:0 2px 12px rgba(0,0,0,0.45);
+/* finom kontraszt */
+text-shadow:0 1px 2px rgba(255,255,255,0.3);
 
 }
 
@@ -119,14 +120,15 @@ BANNER TEXT
 
 .hero-overlay p{
 
-color:#7b2f2f;
+/* szintén mélyebb bordó */
+color:#5a1f1f;
 
 font-size:1.05rem;
 
 opacity:0.95;
 
-/* ADDED SHADOW */
-text-shadow:0 1px 6px rgba(0,0,0,0.35);
+/* nagyon enyhe világos shadow */
+text-shadow:0 1px 1px rgba(255,255,255,0.25);
 
 }
 
@@ -473,4 +475,4 @@ text-align:center;
 
 }
 
-}
+  }
