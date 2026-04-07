@@ -562,29 +562,175 @@ and JSON-based data processing environments.
 
 <h2>Digitally Signed Documents</h2>
 
+<p>
+The identity infrastructure publishes several cryptographically
+signed documents that formally describe the ownership,
+research scope, and semantic data structures associated
+with the decentralized identity node.
+</p>
+
+<p>
+Each document contains structured machine-readable data
+together with a digital signature generated using the
+private cryptographic key associated with the decentralized
+identifier <strong>did:web:identity.nvo987.us</strong>.
+The corresponding public key is published within the
+identity infrastructure and allows external systems
+to independently verify the authenticity of the documents.
+</p>
+
+<p>
+Digital signatures provide mathematical proof that the
+documents originate from the same cryptographic identity
+and that the content has not been altered since publication.
+This mechanism plays a central role in decentralized
+identity systems where trust must be established without
+relying on centralized certification authorities.
+</p>
+
+<p>
+The signature process involves computing a cryptographic
+hash of the document using a secure hash function such
+as <strong>SHA-256</strong>. The resulting hash is then signed
+using the private key of the identity, producing a
+digital signature that can be verified using the
+corresponding public key.
+</p>
+
+<p>
+Within the NVO987 identity infrastructure, signatures
+are generated using modern public-key cryptography,
+typically based on the <strong>Ed25519</strong> signature algorithm.
+This algorithm is widely used in decentralized identity
+systems due to its strong security guarantees,
+high performance, and compact key size.
+</p>
+
+<h3>Verification Overview</h3>
+
+<p>
+External researchers, automated systems, and semantic
+web applications can verify the integrity of the signed
+documents by performing the following steps:
+</p>
+
+<ol>
+
+<li>
+Download the signed document from the identity node.
+</li>
+
+<li>
+Retrieve the public verification key published by the
+identity infrastructure.
+</li>
+
+<li>
+Compute the SHA-256 hash of the document content.
+</li>
+
+<li>
+Verify that the digital signature matches the hash
+using the public key associated with
+<strong>did:web:identity.nvo987.us</strong>.
+</li>
+
+<li>
+Confirm that the document has not been modified
+since the time of signature.
+</li>
+
+</ol>
+
+<p>
+If the verification succeeds, the document can be
+considered authentic and cryptographically linked
+to the decentralized identity node.
+</p>
+
+<h3>Signed Documents</h3>
+
 <ul>
 
 <li>
+<strong>Identity Statement</strong><br>
 <a href="https://identity.nvo987.us/signed/identity-statement.json">
-identity-statement.json
-</a>
+https://identity.nvo987.us/signed/identity-statement.json
+</a><br>
+Cryptographically signed declaration describing the
+ownership, purpose, and operational scope of the
+decentralized identity infrastructure.
 </li>
 
 <li>
+<strong>Research Statement</strong><br>
 <a href="https://identity.nvo987.us/signed/research-statement.json">
-research-statement.json
-</a>
+https://identity.nvo987.us/signed/research-statement.json
+</a><br>
+Digitally signed document summarizing the research
+orientation associated with the infrastructure,
+including references to the Civilizational
+Interpretive Ratio model and related scholarly work.
 </li>
 
 <li>
+<strong>Knowledge Graph Signature</strong><br>
 <a href="https://identity.nvo987.us/signed/knowledge-graph-signature.json">
-knowledge-graph-signature.json
-</a>
+https://identity.nvo987.us/signed/knowledge-graph-signature.json
+</a><br>
+Signature file confirming the integrity of the
+semantic knowledge graph structures associated
+with the identity node.
 </li>
 
 </ul>
 
-</section>
+<h3>Blockchain Timestamp Anchoring</h3>
+
+<p>
+In addition to cryptographic signatures, certain
+documents within the identity infrastructure are
+anchored to the Bitcoin blockchain using the
+<strong>OpenTimestamps</strong> protocol.
+</p>
+
+<p>
+OpenTimestamps provides a decentralized proof of
+existence by committing the cryptographic hash of
+a document into the Bitcoin blockchain.
+This mechanism creates an immutable timestamp
+demonstrating that the document existed at or
+before a specific point in time.
+</p>
+
+<p>
+Timestamp proof files use the
+<strong>.ots</strong> format and can be independently
+verified using OpenTimestamps verification tools.
+These proofs ensure long-term persistence and
+verifiable publication records for identity
+documents and research metadata.
+</p>
+
+<p>
+The combination of cryptographic signatures and
+blockchain-anchored timestamps provides a strong
+integrity model for the decentralized identity
+infrastructure, ensuring both authorship
+verification and immutable publication evidence.
+</p>
+
+<p>
+All signed documents are published in open
+machine-readable formats such as JSON or JSON-LD
+and are designed to be compatible with
+decentralized identity verification workflows,
+semantic web infrastructures, and automated
+research data processing systems.
+</p>
+
+</section> 
+
 
 <section class="content-block">
 
