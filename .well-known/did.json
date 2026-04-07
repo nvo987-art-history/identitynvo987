@@ -153,7 +153,7 @@
     {
       "id": "did:web:identity.nvo987.us#organization",
       "type": "OrganizationService",
-      "serviceEndpoint": "https://identity.nvo987.us/organization"
+      "serviceEndpoint": "https://identity.nvo987.us/profile/organization.jsonld"
     },
     {
       "id": "did:web:identity.nvo987.us#affiliation",
