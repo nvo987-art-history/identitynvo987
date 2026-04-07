@@ -1,12 +1,12 @@
 {
   "@context": "https://schema.org",
-  "id": "https://identity.nvo987.us/machine/graph",
-  "type": "Dataset",
+  "@id": "https://identity.nvo987.us/machine/graph",
+  "@type": "Dataset",
   "name": "NVO987 Knowledge Graph",
   "creator": {
-    "id": "https://identity.nvo987.us/identity/person"
+    "@id": "https://identity.nvo987.us/profile/person"
   },
   "publisher": {
-    "id": "https://identity.nvo987.us/identity/brand"
+    "@id": "https://identity.nvo987.us/profile/organization"
   }
 }
