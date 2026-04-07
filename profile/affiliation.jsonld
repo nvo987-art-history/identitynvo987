@@ -1,0 +1,14 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Role",
+  "@id": "https://identity.nvo987.us/profile/affiliation",
+  "roleName": "President",
+  "member": {
+    "@type": "Person",
+    "@id": "https://identity.nvo987.us/profile/person"
+  },
+  "memberOf": {
+    "@type": "Organization",
+    "@id": "https://identity.nvo987.us/profile/organization"
+  }
+}
