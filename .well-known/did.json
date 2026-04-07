@@ -148,7 +148,7 @@
     {
       "id": "did:web:identity.nvo987.us#person",
       "type": "ProfileService",
-      "serviceEndpoint": "https://identity.nvo987.us/person"
+      "serviceEndpoint": "https://identity.nvo987.us/profile/person.jsnld"
     },
     {
       "id": "did:web:identity.nvo987.us#organization",
