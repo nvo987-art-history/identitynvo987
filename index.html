@@ -506,21 +506,51 @@ in a standardized manner.
 <h2>Cryptographic Verification</h2>
 
 <p>
-The authenticity of the identity is based on public cryptographic keys.
+The authenticity of the identity is based on public key cryptography.
+The public keys associated with the system allow external systems,
+applications, or research infrastructures to cryptographically verify
+the origin and integrity of documents and metadata related to the identity.
+</p>
+
+<p>
+Using the public keys, it is possible to verify that a given document
+has indeed been signed with the private key associated with the identity,
+and that the content has not been modified since publication.
+This mechanism plays a fundamental role in decentralized identity systems,
+as it enables the establishment of trust relationships
+without the need for a centralized certification authority.
+</p>
+
+<p>
+The following resources contain the public keys associated with the
+identity infrastructure and their machine-readable representations.
 </p>
 
 <ul>
 
 <li>
+<strong>Public key (PEM format)</strong><br>
 <a href="https://identity.nvo987.us/keys/identity-public.pem">
 https://identity.nvo987.us/keys/identity-public.pem
-</a>
+</a><br>
+The PEM formatted public key is a widely used cryptographic
+representation compatible with numerous security libraries
+and verification tools. The key can be used to verify digital
+signatures and validate the authenticity of documents
+associated with the system.
 </li>
 
 <li>
+<strong>Public key (JSON format)</strong><br>
 <a href="https://identity.nvo987.us/keys/identity-key.json">
 https://identity.nvo987.us/keys/identity-key.json
-</a>
+</a><br>
+The JSON formatted key description provides a structured,
+machine-readable representation of the public key.
+This format is particularly suitable for web applications,
+APIs, and decentralized identity systems,
+as it can be easily integrated into semantic web
+and JSON-based data processing environments.
 </li>
 
 </ul>
