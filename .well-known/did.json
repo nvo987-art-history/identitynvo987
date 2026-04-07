@@ -158,7 +158,7 @@
     {
       "id": "did:web:identity.nvo987.us#affiliation",
       "type": "AffiliationService",
-      "serviceEndpoint": "https://identity.nvo987.us/affiliation"
+      "serviceEndpoint": "https://identity.nvo987.us/profile/affiliation.jsonld"
     }
   ]
 }
