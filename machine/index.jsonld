@@ -3,15 +3,15 @@
     "https://schema.org",
     "https://www.w3.org/ns/did/v1"
   ],
-  "id": "https://identity.nvo987.us/machine",
-  "type": "Dataset",
+  "@id": "https://identity.nvo987.us/machine",
+  "@type": "Dataset",
   "name": "NVO987 Machine Data Interface",
   "identifier": "did:web:identity.nvo987.us",
   "creator": {
-    "id": "https://identity.nvo987.us/identity/person"
+    "@id": "https://identity.nvo987.us/profile/person"
   },
   "publisher": {
-    "id": "https://identity.nvo987.us/identity/brand"
+    "@id": "https://identity.nvo987.us/profile/organization"
   },
   "hasPart": [
     "https://identity.nvo987.us/machine/schema.jsonld",
