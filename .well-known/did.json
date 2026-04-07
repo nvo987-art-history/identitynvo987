@@ -147,29 +147,18 @@
     },
     {
       "id": "did:web:identity.nvo987.us#person",
-      "type": "Person",
-      "serviceEndpoint": {
-        "name": "Nicholas Van-Orton",
-        "url": "https://identity.nvo987.us"
-      }
+      "type": "ProfileService",
+      "serviceEndpoint": "https://identity.nvo987.us/person"
     },
     {
       "id": "did:web:identity.nvo987.us#organization",
-      "type": "Organization",
-      "serviceEndpoint": {
-        "name": "NVO987 – Culture Visuelle Moderne et Contemporaine",
-        "location": "Paris",
-        "url": "https://nvo987.us"
-      }
+      "type": "OrganizationService",
+      "serviceEndpoint": "https://identity.nvo987.us/organization"
     },
     {
       "id": "did:web:identity.nvo987.us#affiliation",
-      "type": "Affiliation",
-      "serviceEndpoint": {
-        "person": "did:web:identity.nvo987.us#person",
-        "organization": "did:web:identity.nvo987.us#organization",
-        "role": "President"
-      }
+      "type": "AffiliationService",
+      "serviceEndpoint": "https://identity.nvo987.us/affiliation"
     }
   ]
 }
