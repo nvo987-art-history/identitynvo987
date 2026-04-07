@@ -414,8 +414,6 @@ https://identity.nvo987.us/.well-known/did.json-1.ots
 </a>
 </li> 
 
-
-
 </ul>
 
 </section>
@@ -425,35 +423,80 @@ https://identity.nvo987.us/.well-known/did.json-1.ots
 
 <h2>Identity Discovery and Metadata</h2>
 
+<p>
+The following resources provide access to the metadata
+and configuration files of the identity infrastructure
+through standardized <code>.well-known</code> endpoints.
+These machine-readable services allow external systems,
+federated networks, and semantic web applications
+to automatically discover and retrieve information
+associated with the decentralized identity.
+</p>
+
+<p>
+These endpoints primarily serve identity discovery,
+interoperability, and security purposes,
+allowing different services to identify the infrastructure
+in a standardized way and access the related metadata.
+</p>
+
 <ul>
 
 <li>
+<strong>WebFinger discovery endpoint</strong><br>
 <a href="https://identity.nvo987.us/.well-known/webfinger">
-WebFinger discovery endpoint
-</a>
+https://identity.nvo987.us/.well-known/webfinger
+</a><br>
+WebFinger is a standardized mechanism that allows
+external services to query basic metadata
+and related resources of a digital identity.
+The protocol is commonly used by federated social networks
+as well as decentralized identity systems
+to resolve identifiers.
 </li>
 
 <li>
+<strong>NodeInfo infrastructure metadata</strong><br>
 <a href="https://identity.nvo987.us/.well-known/nodeinfo">
-NodeInfo infrastructure metadata
-</a>
+https://identity.nvo987.us/.well-known/nodeinfo
+</a><br>
+NodeInfo is a standardized metadata format
+that provides information about the technical characteristics
+of a web infrastructure,
+such as the software used,
+available services,
+or network configuration.
+It is primarily used by federated systems
+and decentralized platforms.
 </li>
 
 <li>
+<strong>OpenID configuration</strong><br>
 <a href="https://identity.nvo987.us/.well-known/openid-configuration">
-OpenID configuration
-</a>
+https://identity.nvo987.us/.well-known/openid-configuration
+</a><br>
+This endpoint contains configuration information
+related to OpenID-based identity and authentication services.
+The file defines the URLs,
+keys, and protocol parameters
+required for the integration
+of an OpenID-compatible identity service.
 </li>
 
 <li>
+<strong>Security contact information</strong><br>
 <a href="https://identity.nvo987.us/.well-known/security.txt">
-Security contact information
-</a>
+https://identity.nvo987.us/.well-known/security.txt
+</a><br>
+The <code>security.txt</code> file contains
+security contact information for the system.
+It allows security researchers
+or developers who discover vulnerabilities
+to contact the infrastructure operator
+in a standardized manner.
 </li>
 
 </ul>
-
-</section>
 
 
 <section class="content-block">
