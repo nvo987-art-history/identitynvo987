@@ -20,8 +20,8 @@
     "https://mastodon.nvo987.us",
     "https://web3.nvo987.us",
     "https://video.nvo987.us",
-    "https://fediverse.nvo987.us", 
-    "https://ots.nvo987.us", 
+    "https://fediverse.nvo987.us",
+    "https://ots.nvo987.us",
     "https://art.nvo987.us"
   ],
   "verificationMethod": [
@@ -144,6 +144,32 @@
         "https://isni.org/isni/0000000529640885",
         "https://www.wikidata.org/wiki/Q137675227"
       ]
+    },
+    {
+      "id": "did:web:identity.nvo987.us#person",
+      "type": "Person",
+      "serviceEndpoint": {
+        "name": "Nicholas Van-Orton",
+        "url": "https://identity.nvo987.us"
+      }
+    },
+    {
+      "id": "did:web:identity.nvo987.us#organization",
+      "type": "Organization",
+      "serviceEndpoint": {
+        "name": "NVO987 – Culture Visuelle Moderne et Contemporaine",
+        "location": "Paris",
+        "url": "https://nvo987.us"
+      }
+    },
+    {
+      "id": "did:web:identity.nvo987.us#affiliation",
+      "type": "Affiliation",
+      "serviceEndpoint": {
+        "person": "did:web:identity.nvo987.us#person",
+        "organization": "did:web:identity.nvo987.us#organization",
+        "role": "President"
+      }
     }
   ]
 }
