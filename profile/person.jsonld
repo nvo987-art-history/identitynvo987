@@ -96,14 +96,12 @@
     "https://mastodon.social/@nvo987",
     "https://bsky.app/profile/nvo987.us",
     "https://nvo987.us",
-    "https://nvo987.fr",
-    "https://didweb3.org"
+    "https://nvo987.fr"
   ],
 
   "owns": [
     "https://nvo987.us",
-    "https://nvo987.fr",
-    "https://didweb3.org"
+    "https://nvo987.fr"
   ],
 
   "hasCredential": [
@@ -162,7 +160,7 @@
     "proofPurpose": "assertionMethod",
     "verificationMethod": "did:web:identity.nvo987.us#identity-key",
 
-    "jws": "<<IDE_KERÜL_A_GENERÁLT_ALÁÍRÁS>>"
+    "jws": ""
   }
 
 }
