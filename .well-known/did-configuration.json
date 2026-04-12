@@ -21,7 +21,7 @@
         "created": "2026-03-19T00:00:00Z",
         "verificationMethod": "did:web:identity.nvo987.us#identity-key",
         "proofPurpose": "assertionMethod",
-        "proofValue": "WChYLPSBHMJCj+GxgFuu5YuIfFOGMfUbJ3p7ROtZ2jscdGeAR45rOfmkIEKUKwb2HGthsoT1KK9ZJJse7riIAw=="
+        "proofValue": ""
       }
     }
   ]
