@@ -29,7 +29,7 @@
       "id": "did:web:identity.nvo987.us#identity-key",
       "type": "Ed25519VerificationKey2020",
       "controller": "did:web:identity.nvo987.us",
-      "publicKeyMultibase": ""
+      "publicKeyMultibase": "z6Mkm831Z4PUntF6AsNP4CPenTemb5ztL7TZvByH64LswuQhm"
     }
   ],
   "authentication": [
