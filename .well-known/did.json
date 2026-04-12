@@ -169,6 +169,12 @@
       "id": "did:web:identity.nvo987.us#rss-feed",
       "type": "RSSFeed",
       "serviceEndpoint": "https://rss.nvo987.us/rss.jsonl"
-    }
+    }, 
+    {
+    "id": "did:web:identity.nvo987.us#organization-fr",
+    "type": "Organization",
+    "serviceEndpoint": "https://nvo987.fr"
+  }
+    ]
   ]
 }
