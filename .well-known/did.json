@@ -133,6 +133,10 @@
       "type": "SocialIdentity",
       "serviceEndpoint": [
         "https://mastodon.social/@nvo987",
+        "https://nvo987.substack.com",
+        "https://mastodon.social/@nvo987",
+        "https://gravatar.com/nvo987",
+        "https://about.me/nvo987",
         "https://bsky.app/profile/nvo987.us"
       ]
     },
