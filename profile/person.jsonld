@@ -156,21 +156,13 @@
     }
   ],
 
-  "@reverse": {
-    "identifier": "did:web:identity.nvo987.us"
-  },
-
   "proof": {
     "type": "Ed25519Signature2020",
     "created": "2026-03-21T21:26:00Z",
     "proofPurpose": "assertionMethod",
     "verificationMethod": "did:web:identity.nvo987.us#identity-key",
-    "proof": {
-  "type": "Ed25519Signature2020",
-  "created": "2026-03-21T21:26:00Z",
-  "proofPurpose": "assertionMethod",
-  "verificationMethod": "did:web:identity.nvo987.us#identity-key",
-  "jws": "VnBpIyX27uaYN2k+RlltaXsqACwpyDtDerjjkk68Xa040IgEDdHNvObMvoX8gqhUkFYsMR59CK/twbqLMc63WAw=="
-    } 
+
+    "jws": "<<IDE_KERÜL_A_GENERÁLT_ALÁÍRÁS>>"
   }
+
 }
