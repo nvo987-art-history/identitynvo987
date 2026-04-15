@@ -1,0 +1,11 @@
+{
+  "@context": "https://schema.org",
+  "@id": "https://identity.nvo987.us/profile/brand.jsonld",
+  "@type": "Brand",
+  "name": "NVO987",
+  "founder": {
+    "@id": "https://identity.nvo987.us/profile/person.jsonld"
+  },
+  "url": "https://nvo987.us",
+  "identifier": "did:web:identity.nvo987.us"
+}
