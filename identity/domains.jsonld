@@ -1,36 +1,83 @@
 {
   "@context": "https://schema.org",
-  "id": "https://identity.nvo987.us/identity/domains",
-  "type": "ItemList",
-  "name": "NVO987 Domain Network",
-  "itemListElement": [
+  "@id": "https://identity.nvo987.us/identity/domains.jsonld",
+  "@type": "Dataset",
+  "name": "NVO987 Domain Registry",
+  "description": "Authoritative registry of domains and subdomains associated with did:web:identity.nvo987.us",
+  "identifier": "did:web:identity.nvo987.us",
+  "creator": {
+    "@id": "https://identity.nvo987.us/profile/person.jsonld"
+  },
+  "hasPart": [
     {
-      "type": "WebSite",
-      "url": "https://identity.nvo987.us"
+      "@type": "WebSite",
+      "url": "https://nvo987.us",
+      "name": "Primary Website"
     },
     {
-      "type": "WebSite",
-      "url": "https://nvo987.us"
+      "@type": "WebSite",
+      "url": "https://identity.nvo987.us",
+      "name": "Identity Root"
     },
     {
-      "type": "WebSite",
-      "url": "https://nvo987.fr"
+      "@type": "WebSite",
+      "url": "https://profile.nvo987.us",
+      "name": "Profile"
     },
     {
-      "type": "WebSite",
-      "url": "https://knowledge.nvo987.us"
+      "@type": "WebSite",
+      "url": "https://knowledge.nvo987.us",
+      "name": "Knowledge"
     },
     {
-      "type": "WebSite",
-      "url": "https://lab.nvo987.us"
+      "@type": "WebSite",
+      "url": "https://lab.nvo987.us",
+      "name": "Lab"
     },
     {
-      "type": "WebSite",
-      "url": "https://social.nvo987.us"
+      "@type": "WebSite",
+      "url": "https://rss.nvo987.us",
+      "name": "RSS"
     },
     {
-      "type": "WebSite",
-      "url": "https://art.nvo987.us"
+      "@type": "WebSite",
+      "url": "https://web3.nvo987.us",
+      "name": "Web3"
+    },
+    {
+      "@type": "WebSite",
+      "url": "https://video.nvo987.us",
+      "name": "Video"
+    },
+    {
+      "@type": "WebSite",
+      "url": "https://fediverse.nvo987.us",
+      "name": "Fediverse"
+    },
+    {
+      "@type": "WebSite",
+      "url": "https://ots.nvo987.us",
+      "name": "OTS"
+    },
+    {
+      "@type": "WebSite",
+      "url": "https://social.nvo987.us",
+      "name": "Social"
+    },
+    {
+      "@type": "WebSite",
+      "url": "https://social.media.nvo987.us",
+      "name": "Social Media"
+    },
+    {
+      "@type": "WebSite",
+      "url": "https://art.nvo987.us",
+      "name": "Art"
+    },
+    {
+      "@type": "WebSite",
+      "url": "https://bluesky.nvo987.us",
+      "name": "Bluesky"
     }
   ]
 }
