@@ -165,9 +165,12 @@ transition:transform .2s ease, box-shadow .2s ease;
 
 overflow:hidden;
 
+/* 🔥 FONTOS: NE legyen center */
+text-align:left;
+
 }
 
-/* clearfix a float miatt */
+/* clearfix */
 section::after{
 content:"";
 display:block;
@@ -224,6 +227,11 @@ padding-bottom:8px;
 
 }
 
+h3{
+margin-top:18px;
+margin-bottom:10px;
+}
+
 
 /* =========================
 TEXT
@@ -237,24 +245,30 @@ margin-bottom:14px;
 
 
 /* =========================
-LIST FIX (EZ VOLT A LÉNYEG)
+LIST FIX (TELJES JAVÍTÁS)
 ========================= */
 
 ul{
 
-list-style-type:disc;      /* 🔥 EZ HIÁNYZOTT */
+list-style-type:disc;
 list-style-position:outside;
 
-margin-top:8px;
-margin-bottom:14px;
-padding-left:20px;
+margin-top:10px;
+margin-bottom:16px;
+
+padding-left:22px;
+
+/* 🔥 kritikus */
+text-align:left;
 
 }
 
 li{
 
-display:list-item;         /* 🔥 biztosítjuk */
-margin-bottom:6px;
+margin-bottom:8px;
+
+/* 🔥 biztosítja hogy ne törjön szét */
+display:list-item;
 
 }
 
@@ -282,7 +296,7 @@ text-decoration:underline;
 
 
 /* =========================
-MONOSPACE / IDENTIFIERS
+MONOSPACE
 ========================= */
 
 code,
@@ -295,68 +309,6 @@ word-break:break-all;
 overflow-wrap:anywhere;
 
 font-size:0.9rem;
-
-}
-
-
-/* =========================
-ENDPOINT GRID
-========================= */
-
-.endpoint-grid{
-
-display:grid;
-
-grid-template-columns:1fr 1fr;
-
-gap:12px;
-
-margin-top:14px;
-
-}
-
-.endpoint{
-
-background:rgba(255,255,255,0.12);
-
-padding:10px;
-
-border-radius:6px;
-
-font-family:monospace;
-
-font-size:0.9rem;
-
-border-left:3px solid #ffd700;
-
-word-break:break-all;
-overflow-wrap:anywhere;
-
-}
-
-
-/* =========================
-CRYPTO KEY BLOCK
-========================= */
-
-.crypto-key{
-
-background:#2b1111;
-
-padding:16px;
-
-border-radius:8px;
-
-font-family:monospace;
-
-font-size:0.85rem;
-
-border:1px solid #ffd700;
-
-word-break:break-all;
-overflow-wrap:anywhere;
-
-margin-top:14px;
 
 }
 
@@ -449,15 +401,12 @@ font-size:0.95rem;
 
 }
 
-.endpoint-grid{
-
-grid-template-columns:1fr;
-
-}
-
 section{
 
 padding:24px;
+
+/* 🔥 mobilon se legyen center */
+text-align:left;
 
 }
 
@@ -477,7 +426,13 @@ height:120px;
 
 .researcher-info{
 
-text-align:center;
+text-align:left; /* 🔥 EZ IS FONTOS */
+
+}
+
+ul{
+
+padding-left:20px;
 
 }
 
