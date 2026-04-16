@@ -244,14 +244,10 @@ margin-top:8px;
 margin-bottom:14px;
 padding-left:20px;
 
-list-style-type:disc;
-list-style-position:outside;
-
 }
 
 li{
 
-display:list-item;
 margin-bottom:6px;
 
 }
@@ -479,4 +475,4 @@ text-align:center;
 
 }
 
-}
+  }
