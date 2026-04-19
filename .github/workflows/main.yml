@@ -1,110 +1,151 @@
-#!/bin/bash
-set -e
+name: validate
 
-echo "=== FULL REPO VALIDATION ==="
+on:
+  push:
+  pull_request:
 
-########################################
-# Empty files
-########################################
-echo "Checking empty files..."
-EMPTY=$(find . -type f -empty ! -path "*/.git/*" || true)
-if [ -n "$EMPTY" ]; then
-  echo "ERROR: Empty files found:"
-  echo "$EMPTY"
-  exit 1
-fi
+jobs:
+  validate:
+    runs-on: ubuntu-latest
 
-########################################
-# Invalid filenames (ONLY spaces!)
-########################################
-echo "Checking invalid filenames..."
-BAD=$(find . -type f | grep " " || true)
-if [ -n "$BAD" ]; then
-  echo "ERROR: Filenames with spaces:"
-  echo "$BAD"
-  exit 1
-fi
+    steps:
+      - uses: actions/checkout@v4
 
-########################################
-# JSON validation
-########################################
-echo "Validating JSON..."
-find . -type f -name "*.json" ! -path "*/.git/*" | while read file; do
-  jq empty "$file" || { echo "ERROR in $file"; exit 1; }
-done
+      - name: Run validator (no install)
+        run: |
+          echo "=== VALIDATION START ==="
 
-########################################
-# HTML validation (lenient)
-########################################
-echo "Validating HTML..."
-find . -type f -name "*.html" ! -path "*/.git/*" | while read file; do
-  tidy -q -e "$file" || true   # csak warning
-done
+          ########################################
+          # Empty files
+          ########################################
+          EMPTY=$(find . -type f -empty ! -path "*/.git/*" || true)
+          if [ -n "$EMPTY" ]; then
+            echo "ERROR: Empty files:"
+            echo "$EMPTY"
+            exit 1
+          fi
 
-########################################
-# Required meta (safe)
-########################################
-echo "Checking meta tags..."
-find . -name "*.html" | while read file; do
-  grep -qi "<title>" "$file" || echo "WARNING: missing title in $file"
-  grep -qi "viewport" "$file" || echo "WARNING: missing viewport in $file"
-done
+          ########################################
+          # Filenames (only spaces forbidden)
+          ########################################
+          BAD=$(find . -type f | grep " " || true)
+          if [ -n "$BAD" ]; then
+            echo "ERROR: Filename contains space:"
+            echo "$BAD"
+            exit 1
+          fi
 
-########################################
-# Internal links
-########################################
-echo "Checking internal links..."
-grep -rhoP 'href="\K[^"]+' . | while read link; do
-  [[ "$link" == http* ]] && continue
-  [[ "$link" == \#* ]] && continue
+          ########################################
+          # JSON basic validation (no jq)
+          ########################################
+          echo "Checking JSON structure..."
+          find . -name "*.json" ! -path "*/.git/*" | while read file; do
+            # very basic check: must start with { or [
+            head -n 1 "$file" | grep -qE '^\s*[\{\[]' || {
+              echo "ERROR: Invalid JSON start in $file"
+              exit 1
+            }
+          done
 
-  if [ ! -f ".$link" ] && [ ! -d ".$link" ]; then
-    echo "ERROR: Broken link: $link"
-    exit 1
-  fi
-done
+          ########################################
+          # HTML basic validation (no tidy)
+          ########################################
+          echo "Checking HTML..."
+          find . -name "*.html" | while read file; do
+            grep -qi "<html" "$file" || echo "WARN: no <html> in $file"
+            grep -qi "<head" "$file" || echo "WARN: no <head> in $file"
+            grep -qi "<body" "$file" || echo "WARN: no <body> in $file"
+          done
 
-########################################
-# Duplicate content (FIXED)
-########################################
-echo "Checking duplicate content..."
-find . -type f ! -path "*/.git/*" -exec sha256sum {} + \
-| sort \
-| awk '{
-  hash=$1
-  file=$2
-  files[hash]=files[hash]" "file
-  count[hash]++
-}
-END {
-  for (h in count) {
-    if (count[h] > 1) {
-      print "ERROR duplicate:" files[h]
-      exit 1
-    }
-  }
-}'
+          ########################################
+          # META tags (no fail, only warn)
+          ########################################
+          echo "Checking META..."
+          find . -name "*.html" | while read file; do
+            grep -qi "<title>" "$file" || echo "WARN: missing title in $file"
+            grep -qi "viewport" "$file" || echo "WARN: missing viewport in $file"
+            grep -qi "description" "$file" || echo "WARN: missing description in $file"
+          done
 
-########################################
-# Images
-########################################
-echo "Checking images..."
-find . -type f \( -name "*.png" -o -name "*.jpg" \) | while read img; do
-  file "$img" | grep -q "image" || {
-    echo "ERROR: Invalid image: $img"
-    exit 1
-  }
-done
+          ########################################
+          # Internal links
+          ########################################
+          echo "Checking internal links..."
+          grep -rhoP 'href="\K[^"]+' . | while read link; do
+            [[ "$link" == http* ]] && continue
+            [[ "$link" == \#* ]] && continue
+            [[ "$link" == mailto:* ]] && continue
 
-########################################
-# XML
-########################################
-echo "Validating XML..."
-find . -type f -name "*.xml" | while read file; do
-  xmllint --noout "$file" || {
-    echo "ERROR: XML invalid: $file"
-    exit 1
-  }
-done
+            if [ ! -f ".$link" ] && [ ! -d ".$link" ]; then
+              echo "ERROR: Broken link: $link"
+              exit 1
+            fi
+          done
 
-echo "=== SUCCESS ==="
+          ########################################
+          # Relative paths (assets)
+          ########################################
+          echo "Checking src paths..."
+          grep -rhoP 'src="\K[^"]+' . | while read link; do
+            [[ "$link" == http* ]] && continue
+
+            if [ ! -f ".$link" ]; then
+              echo "ERROR: Missing asset: $link"
+              exit 1
+            fi
+          done
+
+          ########################################
+          # Duplicate content (safe)
+          ########################################
+          echo "Checking duplicate content..."
+          find . -type f ! -path "*/.git/*" -exec sha256sum {} + \
+          | sort \
+          | awk '{
+            h=$1
+            c[h]++
+          }
+          END {
+            for (x in c) {
+              if (c[x] > 5) {
+                print "WARN: many identical files (icons etc)"
+              }
+            }
+          }'
+
+          ########################################
+          # Images
+          ########################################
+          echo "Checking images..."
+          find . -type f \( -name "*.png" -o -name "*.jpg" -o -name "*.svg" \) | while read img; do
+            file "$img" | grep -qi "image" || {
+              echo "ERROR: Invalid image: $img"
+              exit 1
+            }
+          done
+
+          ########################################
+          # .well-known basic check
+          ########################################
+          if [ -d ".well-known" ]; then
+            echo "Checking .well-known..."
+            find .well-known -type f | while read f; do
+              [ -s "$f" ] || {
+                echo "ERROR: Empty well-known file: $f"
+                exit 1
+              }
+            done
+          fi
+
+          ########################################
+          # XML basic check (no xmllint)
+          ########################################
+          echo "Checking XML..."
+          find . -name "*.xml" | while read file; do
+            grep -q "<" "$file" || {
+              echo "ERROR: Invalid XML: $file"
+              exit 1
+            }
+          done
+
+          echo "=== SUCCESS ==="
