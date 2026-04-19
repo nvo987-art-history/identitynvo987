@@ -21,7 +21,7 @@ jobs:
           fetch-depth: 0
 
       # -------------------------
-      # CACHE (GYORSÍTÁS)
+      # CACHE
       # -------------------------
       - name: Cache npm
         uses: actions/cache@v4
@@ -35,43 +35,47 @@ jobs:
       - name: Install system tools
         run: |
           sudo apt-get update
-          sudo apt-get install -y jq tidy curl
+          sudo apt-get install -y jq tidy curl bc
 
       - name: Install Node tools
         run: |
-          npm install -g htmlhint lighthouse broken-link-checker
+          npm install -g htmlhint lighthouse
 
       # -------------------------
       # CRITICAL FILES
       # -------------------------
-      - name: Ensure 404.html exists
+      - name: Ensure critical files exist
         run: |
+          set -e
+          test -f index.html || (echo "Missing index.html" && exit 1)
           test -f 404.html || (echo "Missing 404.html" && exit 1)
+          test -f sitemap.xml || echo "Warning: sitemap.xml missing"
+          test -f robots.txt || echo "Warning: robots.txt missing"
 
       # -------------------------
-      # JSON VALIDATION
+      # JSON VALIDATION (STRICT)
       # -------------------------
       - name: Validate JSON
         run: |
           set -e
           find . -type f \( -name "*.json" -o -name "*.jsonld" \) ! -path "*/.git/*" \
-          -exec sh -c 'echo "JSON: $1"; jq . "$1" > /dev/null' _ {} \;
+          -exec sh -c 'jq . "$1" > /dev/null || (echo "Invalid JSON: $1" && exit 1)' _ {} \;
 
       # -------------------------
       # HTML VALIDATION
       # -------------------------
-      - name: Validate HTML (tidy)
+      - name: Validate HTML (tidy strict)
         run: |
           set -e
           find . -type f -name "*.html" ! -path "*/.git/*" \
-          -exec sh -c 'echo "Tidy: $1"; tidy -q -e "$1"' _ {} \;
+          -exec sh -c 'tidy -q -e "$1" || (echo "HTML error in $1" && exit 1)' _ {} \;
 
       - name: Validate HTML (htmlhint)
         run: |
           htmlhint "**/*.html"
 
       # -------------------------
-      # EMPTY FILE CHECK
+      # EMPTY FILES (FAIL)
       # -------------------------
       - name: No empty files
         run: |
@@ -82,30 +86,65 @@ jobs:
           fi
 
       # -------------------------
-      # INTERNAL LINK CHECK
+      # DUPLICATE CONTENT (FIXED)
+      # -------------------------
+      - name: Detect duplicate files by hash
+        run: |
+          set -e
+          DUPES=$(find . -type f ! -path "*/.git/*" -exec sha256sum {} + | sort | uniq -d)
+          if [ -n "$DUPES" ]; then
+            echo "Duplicate file content detected:"
+            echo "$DUPES"
+            exit 1
+          fi
+
+      # -------------------------
+      # INTERNAL LINKS (STRICT)
       # -------------------------
       - name: Internal link integrity
         run: |
           set -e
           grep -rhoP 'href="\K[^"]+' . | while read -r link; do
-            if [[ "$link" == /*.html ]]; then
-              [ -f ".$link" ] || (echo "Broken link: $link" && exit 1)
+            if [[ "$link" == /* ]]; then
+              if [ ! -f ".$link" ]; then
+                echo "Broken internal link: $link"
+                exit 1
+              fi
             fi
           done
 
       # -------------------------
-      # EXTERNAL LINK CHECK
+      # EXTERNAL LINKS (SOFT FAIL)
       # -------------------------
       - name: External link check
         run: |
-          grep -rhoP 'href="https?://[^"]+' . | cut -d '"' -f2 | sort -u | head -n 25 \
+          grep -rhoP 'href="https?://[^"]+' . | cut -d '"' -f2 | sort -u | head -n 20 \
           | while read -r url; do
               echo "Checking $url"
               curl -Is --max-time 5 "$url" | head -n 1 || echo "Warning: $url"
             done
 
       # -------------------------
-      # BASIC SEO VALIDATION
+      # SECURITY (STRICT)
+      # -------------------------
+      - name: Security checks
+        run: |
+          set -e
+
+          # target=_blank must have rel
+          if grep -r 'target="_blank"' . | grep -v 'rel='; then
+            echo "SECURITY FAIL: target=_blank without rel"
+            exit 1
+          fi
+
+          # inline blocking scripts
+          if grep -r "<script>" . | grep -v "defer" | grep -v "async"; then
+            echo "SECURITY FAIL: blocking script detected"
+            exit 1
+          fi
+
+      # -------------------------
+      # SEO (STRICT)
       # -------------------------
       - name: SEO checks
         run: |
@@ -114,8 +153,24 @@ jobs:
           -exec sh -c '
             file="$1"
             grep -qi "<title>" "$file" || (echo "Missing title: $file" && exit 1)
+            grep -qi "meta name=\"description\"" "$file" || (echo "Missing description: $file" && exit 1)
             grep -qi "meta name=\"viewport\"" "$file" || (echo "Missing viewport: $file" && exit 1)
           ' _ {} \;
+
+      # -------------------------
+      # PERFORMANCE HINTS (WARN)
+      # -------------------------
+      - name: Performance hints
+        run: |
+          # images without lazy loading
+          if grep -r "<img" . | grep -v "loading="; then
+            echo "Warning: images without loading=lazy"
+          fi
+
+          # large inline CSS
+          if grep -r "<style>" .; then
+            echo "Warning: inline CSS detected"
+          fi
 
       # -------------------------
       # LIGHTHOUSE
@@ -130,7 +185,7 @@ jobs:
             --output-path=./lighthouse-report.json
 
       # -------------------------
-      # FIXED SCORE CHECK
+      # SCORE CHECK (STRICT BUT REALISTIC)
       # -------------------------
       - name: Enforce Lighthouse score
         run: |
@@ -140,10 +195,8 @@ jobs:
           LIMIT=60
 
           if [ "$SCORE" -lt "$LIMIT" ]; then
-            echo "Performance too low! (limit: $LIMIT)"
+            echo "FAIL: Performance too low (limit: $LIMIT)"
             exit 1
-          else
-            echo "Performance OK"
           fi
 
       # -------------------------
