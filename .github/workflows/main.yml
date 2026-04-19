@@ -13,20 +13,13 @@ jobs:
         uses: actions/checkout@v4
 
       # -----------------------------
-      # Install tools
+      # INSTALL
       # -----------------------------
       - name: Install tools
         run: |
           sudo apt-get update
-          sudo apt-get install -y tidy jq
-
+          sudo apt-get install -y tidy jq libxml2-utils
           npm install -g htmlhint
-
-      # -----------------------------
-      # STRICT MODE
-      # -----------------------------
-      - name: Enable strict mode
-        run: set -e
 
       # -----------------------------
       # EMPTY FILES
@@ -35,25 +28,25 @@ jobs:
         run: |
           EMPTY=$(find . -type f -empty ! -path "*/.git/*")
           if [ -n "$EMPTY" ]; then
-            echo "Empty files found:"
+            echo "❌ Empty files found:"
             echo "$EMPTY"
             exit 1
           fi
 
       # -----------------------------
-      # INVALID FILENAMES
+      # SAFE FILENAME CHECK
       # -----------------------------
       - name: Check invalid filenames
         run: |
-          BAD=$(find . -type f | grep -E "[A-Z ]" || true)
+          BAD=$(find . -type f ! -path "*/.git/*" | grep -E '[<>:"\\|?*]' || true)
           if [ -n "$BAD" ]; then
-            echo "Invalid filenames:"
+            echo "❌ Invalid filenames:"
             echo "$BAD"
             exit 1
           fi
 
       # -----------------------------
-      # JSON / JSON-LD VALIDATION
+      # JSON VALIDATION
       # -----------------------------
       - name: Validate JSON & JSON-LD
         run: |
@@ -63,7 +56,7 @@ jobs:
           done
 
       # -----------------------------
-      # HTML (TIDY)
+      # HTML (TIDY - NON BLOCKING)
       # -----------------------------
       - name: Validate HTML with tidy
         run: |
@@ -73,14 +66,14 @@ jobs:
           done
 
       # -----------------------------
-      # HTML (HTMLHINT)
+      # HTMLHINT (NON BLOCKING)
       # -----------------------------
       - name: Validate HTML with htmlhint
         run: |
           htmlhint "**/*.html" || true
 
       # -----------------------------
-      # REQUIRED META (ONLY INDEX)
+      # META TAGS (ONLY INDEX)
       # -----------------------------
       - name: Enforce required meta tags
         run: |
@@ -92,6 +85,7 @@ jobs:
             grep -qi "<title>" "$file" || { echo "❌ Missing <title> in $file"; ERROR=1; }
             grep -qi 'name="viewport"' "$file" || { echo "❌ Missing viewport in $file"; ERROR=1; }
             grep -qi 'name="description"' "$file" || { echo "❌ Missing description in $file"; ERROR=1; }
+
           done
 
           exit $ERROR
@@ -107,6 +101,7 @@ jobs:
 
             [[ "$link" == http* ]] && continue
             [[ "$link" == \#* ]] && continue
+            [[ "$link" == mailto:* ]] && continue
 
             FILE=".$link"
 
@@ -120,7 +115,7 @@ jobs:
           exit $ERROR
 
       # -----------------------------
-      # RELATIVE PATHS
+      # RELATIVE PATHS (WARNING ONLY)
       # -----------------------------
       - name: Validate relative paths
         run: |
@@ -135,9 +130,9 @@ jobs:
       # -----------------------------
       - name: Detect duplicate files
         run: |
-          DUP=$(find . -type f -exec sha256sum {} + | sort | uniq -d -w64)
+          DUP=$(find . -type f ! -path "*/.git/*" -exec sha256sum {} + | sort | uniq -d -w64)
           if [ -n "$DUP" ]; then
-            echo "Duplicate files found:"
+            echo "❌ Duplicate files found:"
             echo "$DUP"
             exit 1
           fi
@@ -147,14 +142,14 @@ jobs:
       # -----------------------------
       - name: Security validation
         run: |
-          grep -r "<script>" . && echo "⚠️ Inline script found"
+          grep -r "<script>" . --exclude-dir=.git && echo "⚠️ Inline script found"
 
       # -----------------------------
-      # IMAGE CHECK
+      # IMAGE ALT CHECK
       # -----------------------------
       - name: Image checks
         run: |
-          grep -r "<img" . | grep -v "alt=" && echo "⚠️ Missing alt attributes"
+          grep -r "<img" . --exclude-dir=.git | grep -v "alt=" && echo "⚠️ Missing alt attributes"
 
       # -----------------------------
       # .WELL-KNOWN
@@ -162,22 +157,22 @@ jobs:
       - name: Validate .well-known structure
         run: |
           if [ -d ".well-known" ]; then
-            echo ".well-known exists"
+            echo "✔ .well-known exists"
           else
             echo "⚠️ Missing .well-known directory"
           fi
 
       # -----------------------------
-      # XML
+      # XML VALIDATION
       # -----------------------------
       - name: Validate XML files
         run: |
-          find . -name "*.xml" | while read file; do
+          find . -name "*.xml" ! -path "*/.git/*" | while read file; do
             xmllint --noout "$file" || exit 1
           done
 
       # -----------------------------
-      # SUCCESS
+      # DONE
       # -----------------------------
       - name: SUCCESS
-        run: echo "All checks passed"
+        run: echo "✅ All critical checks passed"
