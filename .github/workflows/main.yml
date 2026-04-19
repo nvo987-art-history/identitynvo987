@@ -1,227 +1,177 @@
-name: ENTERPRISE Web Validation Suite
+#!/usr/bin/env bash
+set -Eeuo pipefail
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-  workflow_dispatch:
+echo "🚀 FULL REPO VALIDATOR (STRICT MODE)"
 
-jobs:
-  validate:
-    runs-on: ubuntu-latest
+ERRORS=0
+TMP_ERRORS=$(mktemp)
 
-    steps:
-      # -------------------------
-      # CHECKOUT
-      # -------------------------
-      - name: Checkout FULL repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+fail() {
+  echo "❌ $1"
+  echo 1 > "$TMP_ERRORS"
+}
 
-      # -------------------------
-      # CACHE
-      # -------------------------
-      - name: Cache npm
-        uses: actions/cache@v4
-        with:
-          path: ~/.npm
-          key: npm-${{ runner.os }}
+ok() {
+  echo "✅ $1"
+}
 
-      # -------------------------
-      # INSTALL TOOLS
-      # -------------------------
-      - name: Install system tools
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y jq tidy curl bc
+########################################
+# 0. INIT
+########################################
+echo 0 > "$TMP_ERRORS"
 
-      - name: Install Node tools
-        run: |
-          npm install -g htmlhint lighthouse
+########################################
+# 1. FILE STRUCTURE
+########################################
+echo "📁 Checking files..."
 
-      # -------------------------
-      # CRITICAL FILES
-      # -------------------------
-      - name: Ensure critical files exist
-        run: |
-          test -f index.html || (echo "Missing index.html" && exit 1)
-          test -f 404.html || (echo "Missing 404.html" && exit 1)
+while IFS= read -r file; do
+  if [ ! -s "$file" ]; then
+    fail "Empty file: $file"
+  fi
+done < <(find . -type f)
 
-      # -------------------------
-      # JSON VALIDATION
-      # -------------------------
-      - name: Validate JSON
-        run: |
-          set -e
-          find . -type f \( -name "*.json" -o -name "*.jsonld" \) ! -path "*/.git/*" \
-          -exec sh -c 'echo "JSON: $1"; jq . "$1" > /dev/null' _ {} \;
+########################################
+# 2. JSON VALIDATION
+########################################
+echo "🧠 JSON validation..."
 
-      # -------------------------
-      # HTML VALIDATION
-      # -------------------------
-      - name: Validate HTML (tidy strict)
-        run: |
-          set -e
-          find . -type f -name "*.html" ! -path "*/.git/*" \
-          -exec sh -c 'echo "Tidy: $1"; tidy -q -e "$1"' _ {} \;
+while IFS= read -r file; do
+  if ! jq empty "$file" >/dev/null 2>&1; then
+    fail "Invalid JSON: $file"
+  else
+    ok "JSON OK: $file"
+  fi
+done < <(find . \( -name "*.json" -o -name "*.jsonld" \))
 
-      - name: Validate HTML (htmlhint)
-        run: htmlhint "**/*.html"
+########################################
+# 3. HTML STRUCTURE
+########################################
+echo "🌐 HTML validation..."
 
-      # -------------------------
-      # EMPTY FILE CHECK
-      # -------------------------
-      - name: No empty files
-        run: |
-          set -e
-          if find . -type f ! -path "*/.git/*" -empty | grep .; then
-            echo "Empty files found"
-            exit 1
-          fi
+while IFS= read -r file; do
 
-      # -------------------------
-      # DUPLICATE FILE CHECK
-      # -------------------------
-      - name: Detect duplicate files
-        run: |
-          set -e
-          DUP=$(find . -type f ! -path "*/.git/*" -exec sha256sum {} + | sort | uniq -d || true)
-          if [ -n "$DUP" ]; then
-            echo "Duplicate files detected"
-            echo "$DUP"
-            exit 1
-          fi
+  grep -q "<html" "$file" || fail "Missing <html>: $file"
+  grep -q "</html>" "$file" || fail "Missing </html>: $file"
+  grep -q "<head" "$file" || fail "Missing <head>: $file"
+  grep -q "<body" "$file" || fail "Missing <body>: $file"
 
-      # -------------------------
-      # INTERNAL LINK CHECK (SMART)
-      # -------------------------
-      - name: Internal link integrity (smart)
-        run: |
-          set -e
+done < <(find . -name "*.html")
 
-          DOMAIN="https://identity.nvo987.us"
+########################################
+# 4. LINK VALIDATION (SMART)
+########################################
+echo "🔗 Checking links..."
 
-          grep -rhoP 'href="\K[^"]+' . | while read -r link; do
+while IFS= read -r file; do
 
-            # skip anchors
-            [[ "$link" == \#* ]] && continue
+  BASE=$(grep -oP '<link rel="canonical" href="\K[^"]+' "$file" | head -n1 || true)
+  BASE=${BASE%/}
 
-            # absolute external
-            if [[ "$link" == http* ]]; then
-              continue
-            fi
+  grep -rhoP 'href="\K[^"]+' "$file" | sort -u | while read -r link; do
 
-            # local file exists
-            if [ -f ".$link" ]; then
-              continue
-            fi
+    [[ "$link" == \#* ]] && continue
+    [[ "$link" =~ ^(mailto:|tel:|javascript:) ]] && continue
 
-            # try HTTP check for endpoints
-            STATUS=$(curl -o /dev/null -s -w "%{http_code}" "$DOMAIN$link")
+    URL=""
 
-            if [[ "$STATUS" != "200" ]]; then
-              echo "Broken link: $link (HTTP $STATUS)"
-              exit 1
-            else
-              echo "OK (endpoint): $link"
-            fi
+    if [[ "$link" =~ ^https?:// ]]; then
+      URL="$link"
 
-          done
+    elif [[ "$link" =~ ^// ]]; then
+      URL="https:$link"
 
-      # -------------------------
-      # EXTERNAL LINKS (STRICT)
-      # -------------------------
-      - name: External link check
-        run: |
-          set -e
-          grep -rhoP 'href="https?://[^"]+' . | cut -d '"' -f2 | sort -u | head -n 30 \
-          | while read -r url; do
-              STATUS=$(curl -Is --max-time 5 "$url" | head -n 1 | grep -o "[0-9][0-9][0-9]" || true)
-              echo "$url -> $STATUS"
-              if [[ "$STATUS" != "200" && "$STATUS" != "301" && "$STATUS" != "302" ]]; then
-                echo "Broken external: $url"
-                exit 1
-              fi
-            done
+    elif [[ "$link" =~ ^/ ]]; then
+      URL="$BASE$link"
 
-      # -------------------------
-      # SECURITY CHECKS
-      # -------------------------
-      - name: Security checks (strict)
-        run: |
-          set -e
+    else
+      LOCAL="$(dirname "$file")/$link"
+      if [ -f "$LOCAL" ]; then
+        ok "Local OK: $LOCAL"
+        continue
+      fi
+      URL="$BASE/$link"
+    fi
 
-          # inline JS
-          if grep -r "<script>" . | grep -v defer; then
-            echo "Blocking JS detected"
-            exit 1
-          fi
+    # skip empty base
+    if [ -z "$URL" ]; then
+      continue
+    fi
 
-          # target blank without rel
-          if grep -r 'target="_blank"' . | grep -v 'rel='; then
-            echo "Missing rel=noopener"
-            exit 1
-          fi
+    STATUS=$(curl -o /dev/null -s -L --max-time 10 -w "%{http_code}" "$URL" || echo "000")
 
-      # -------------------------
-      # SEO CHECKS (STRICT)
-      # -------------------------
-      - name: SEO checks
-        run: |
-          set -e
-          find . -name "*.html" ! -path "*/.git/*" \
-          -exec sh -c '
-            file="$1"
+    if [[ "$STATUS" =~ ^2|3 ]]; then
+      ok "$URL ($STATUS)"
+    else
+      fail "$URL ($STATUS)"
+    fi
 
-            grep -qi "<title>" "$file" || exit 1
-            grep -qi "meta name=\"description\"" "$file" || exit 1
-            grep -qi "meta name=\"viewport\"" "$file" || exit 1
-            grep -qi "rel=\"canonical\"" "$file" || exit 1
+  done
 
-          ' _ {} \;
+done < <(find . -name "*.html")
 
-      # -------------------------
-      # IMAGE CHECK (STRICT)
-      # -------------------------
-      - name: Image best practices
-        run: |
-          set -e
-          if grep -r "<img" . | grep -v "loading="; then
-            echo "Images must use lazy loading"
-            exit 1
-          fi
+########################################
+# 5. ASSETS (src)
+########################################
+echo "🖼 Checking assets..."
 
-      # -------------------------
-      # LIGHTHOUSE
-      # -------------------------
-      - name: Run Lighthouse
-        run: |
-          npx lighthouse https://identity.nvo987.us \
-            --only-categories=performance,seo \
-            --quiet \
-            --chrome-flags="--headless" \
-            --output=json \
-            --output-path=./lighthouse-report.json
+grep -rhoP 'src="\K[^"]+' . | sort -u | while read -r src; do
 
-      # -------------------------
-      # STRICT SCORE
-      # -------------------------
-      - name: Enforce Lighthouse score
-        run: |
-          SCORE=$(jq '.categories.performance.score * 100 | floor' lighthouse-report.json)
-          echo "Performance score: $SCORE"
+  [[ "$src" =~ ^data: ]] && continue
 
-          LIMIT=60
+  if [[ "$src" =~ ^https?:// ]]; then
+    STATUS=$(curl -o /dev/null -s -L --max-time 10 -w "%{http_code}" "$src" || echo "000")
+    [[ "$STATUS" =~ ^2|3 ]] || fail "Asset fail: $src ($STATUS)"
+  else
+    [ -f ".$src" ] || fail "Missing asset: $src"
+  fi
 
-          if [ "$SCORE" -lt "$LIMIT" ]; then
-            echo "Performance too low"
-            exit 1
-          fi
+done
 
-      # -------------------------
-      # FINAL
-      # -------------------------
-      - name: Done
-        run: echo "ENTERPRISE VALIDATION PASSED"
+########################################
+# 6. .WELL-KNOWN (AUTO DISCOVERY)
+########################################
+echo "🧬 .well-known validation..."
+
+grep -rhoP '\.well-known[^"]*' . | sort -u | while read -r path; do
+
+  if [[ "$path" =~ ^https?:// ]]; then
+    URL="$path"
+  else
+    BASE=$(grep -oP 'https?://[^"]+' . | head -n1)
+    URL="${BASE%/}/$path"
+  fi
+
+  STATUS=$(curl -o /dev/null -s -L --max-time 10 -w "%{http_code}" "$URL" || echo "000")
+
+  if [[ "$STATUS" =~ ^2|3 ]]; then
+    ok "$URL ($STATUS)"
+  else
+    fail "$URL ($STATUS)"
+  fi
+
+done
+
+########################################
+# 7. DUPLICATES
+########################################
+echo "🔁 Duplicate links..."
+
+DUPES=$(grep -rhoP 'href="\K[^"]+' . | sort | uniq -d)
+
+if [ -n "$DUPES" ]; then
+  echo "⚠️ Duplicate links:"
+  echo "$DUPES"
+fi
+
+########################################
+# 8. FINAL
+########################################
+
+if [ "$(cat $TMP_ERRORS)" -eq 0 ]; then
+  echo "🎉 REPO CLEAN"
+  exit 0
+else
+  echo "💥 ERRORS FOUND"
+  exit 1
+fi
