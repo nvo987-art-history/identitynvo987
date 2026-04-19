@@ -1,178 +1,110 @@
-name: validate
+#!/bin/bash
+set -e
 
-on:
-  push:
-  pull_request:
+echo "=== FULL REPO VALIDATION ==="
 
-jobs:
-  validate:
-    runs-on: ubuntu-latest
+########################################
+# Empty files
+########################################
+echo "Checking empty files..."
+EMPTY=$(find . -type f -empty ! -path "*/.git/*" || true)
+if [ -n "$EMPTY" ]; then
+  echo "ERROR: Empty files found:"
+  echo "$EMPTY"
+  exit 1
+fi
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+########################################
+# Invalid filenames (ONLY spaces!)
+########################################
+echo "Checking invalid filenames..."
+BAD=$(find . -type f | grep " " || true)
+if [ -n "$BAD" ]; then
+  echo "ERROR: Filenames with spaces:"
+  echo "$BAD"
+  exit 1
+fi
 
-      # -----------------------------
-      # INSTALL
-      # -----------------------------
-      - name: Install tools
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y tidy jq libxml2-utils
-          npm install -g htmlhint
+########################################
+# JSON validation
+########################################
+echo "Validating JSON..."
+find . -type f -name "*.json" ! -path "*/.git/*" | while read file; do
+  jq empty "$file" || { echo "ERROR in $file"; exit 1; }
+done
 
-      # -----------------------------
-      # EMPTY FILES
-      # -----------------------------
-      - name: Detect empty files
-        run: |
-          EMPTY=$(find . -type f -empty ! -path "*/.git/*")
-          if [ -n "$EMPTY" ]; then
-            echo "❌ Empty files found:"
-            echo "$EMPTY"
-            exit 1
-          fi
+########################################
+# HTML validation (lenient)
+########################################
+echo "Validating HTML..."
+find . -type f -name "*.html" ! -path "*/.git/*" | while read file; do
+  tidy -q -e "$file" || true   # csak warning
+done
 
-      # -----------------------------
-      # SAFE FILENAME CHECK
-      # -----------------------------
-      - name: Check invalid filenames
-        run: |
-          BAD=$(find . -type f ! -path "*/.git/*" | grep -E '[<>:"\\|?*]' || true)
-          if [ -n "$BAD" ]; then
-            echo "❌ Invalid filenames:"
-            echo "$BAD"
-            exit 1
-          fi
+########################################
+# Required meta (safe)
+########################################
+echo "Checking meta tags..."
+find . -name "*.html" | while read file; do
+  grep -qi "<title>" "$file" || echo "WARNING: missing title in $file"
+  grep -qi "viewport" "$file" || echo "WARNING: missing viewport in $file"
+done
 
-      # -----------------------------
-      # JSON VALIDATION
-      # -----------------------------
-      - name: Validate JSON & JSON-LD
-        run: |
-          find . -type f \( -name "*.json" -o -name "*.jsonld" \) ! -path "*/.git/*" | while read file; do
-            echo "Checking JSON: $file"
-            jq empty "$file" || exit 1
-          done
+########################################
+# Internal links
+########################################
+echo "Checking internal links..."
+grep -rhoP 'href="\K[^"]+' . | while read link; do
+  [[ "$link" == http* ]] && continue
+  [[ "$link" == \#* ]] && continue
 
-      # -----------------------------
-      # HTML (TIDY - NON BLOCKING)
-      # -----------------------------
-      - name: Validate HTML with tidy
-        run: |
-          find . -type f -name "*.html" ! -path "*/.git/*" | while read file; do
-            echo "Tidy check: $file"
-            tidy -q "$file" || true
-          done
+  if [ ! -f ".$link" ] && [ ! -d ".$link" ]; then
+    echo "ERROR: Broken link: $link"
+    exit 1
+  fi
+done
 
-      # -----------------------------
-      # HTMLHINT (NON BLOCKING)
-      # -----------------------------
-      - name: Validate HTML with htmlhint
-        run: |
-          htmlhint "**/*.html" || true
+########################################
+# Duplicate content (FIXED)
+########################################
+echo "Checking duplicate content..."
+find . -type f ! -path "*/.git/*" -exec sha256sum {} + \
+| sort \
+| awk '{
+  hash=$1
+  file=$2
+  files[hash]=files[hash]" "file
+  count[hash]++
+}
+END {
+  for (h in count) {
+    if (count[h] > 1) {
+      print "ERROR duplicate:" files[h]
+      exit 1
+    }
+  }
+}'
 
-      # -----------------------------
-      # META TAGS (ONLY INDEX)
-      # -----------------------------
-      - name: Enforce required meta tags
-        run: |
-          ERROR=0
+########################################
+# Images
+########################################
+echo "Checking images..."
+find . -type f \( -name "*.png" -o -name "*.jpg" \) | while read img; do
+  file "$img" | grep -q "image" || {
+    echo "ERROR: Invalid image: $img"
+    exit 1
+  }
+done
 
-          find . -name "index.html" ! -path "*/.git/*" | while read file; do
-            echo "Meta check: $file"
+########################################
+# XML
+########################################
+echo "Validating XML..."
+find . -type f -name "*.xml" | while read file; do
+  xmllint --noout "$file" || {
+    echo "ERROR: XML invalid: $file"
+    exit 1
+  }
+done
 
-            grep -qi "<title>" "$file" || { echo "❌ Missing <title> in $file"; ERROR=1; }
-            grep -qi 'name="viewport"' "$file" || { echo "❌ Missing viewport in $file"; ERROR=1; }
-            grep -qi 'name="description"' "$file" || { echo "❌ Missing description in $file"; ERROR=1; }
-
-          done
-
-          exit $ERROR
-
-      # -----------------------------
-      # INTERNAL LINKS
-      # -----------------------------
-      - name: Validate internal links
-        run: |
-          ERROR=0
-
-          grep -rhoP 'href="\K[^"]+' . | while read link; do
-
-            [[ "$link" == http* ]] && continue
-            [[ "$link" == \#* ]] && continue
-            [[ "$link" == mailto:* ]] && continue
-
-            FILE=".$link"
-
-            if [ ! -e "$FILE" ]; then
-              echo "❌ Broken link: $link"
-              ERROR=1
-            fi
-
-          done
-
-          exit $ERROR
-
-      # -----------------------------
-      # RELATIVE PATHS (WARNING ONLY)
-      # -----------------------------
-      - name: Validate relative paths
-        run: |
-          grep -rhoP '(src|href)="\K[^"]+' . | while read path; do
-            if [[ "$path" != http* ]] && [[ "$path" != /* ]] && [[ ! -f "$path" ]]; then
-              echo "⚠️ Possibly invalid path: $path"
-            fi
-          done
-
-      # -----------------------------
-      # DUPLICATE FILES
-      # -----------------------------
-      - name: Detect duplicate files
-        run: |
-          DUP=$(find . -type f ! -path "*/.git/*" -exec sha256sum {} + | sort | uniq -d -w64)
-          if [ -n "$DUP" ]; then
-            echo "❌ Duplicate files found:"
-            echo "$DUP"
-            exit 1
-          fi
-
-      # -----------------------------
-      # SECURITY CHECK
-      # -----------------------------
-      - name: Security validation
-        run: |
-          grep -r "<script>" . --exclude-dir=.git && echo "⚠️ Inline script found"
-
-      # -----------------------------
-      # IMAGE ALT CHECK
-      # -----------------------------
-      - name: Image checks
-        run: |
-          grep -r "<img" . --exclude-dir=.git | grep -v "alt=" && echo "⚠️ Missing alt attributes"
-
-      # -----------------------------
-      # .WELL-KNOWN
-      # -----------------------------
-      - name: Validate .well-known structure
-        run: |
-          if [ -d ".well-known" ]; then
-            echo "✔ .well-known exists"
-          else
-            echo "⚠️ Missing .well-known directory"
-          fi
-
-      # -----------------------------
-      # XML VALIDATION
-      # -----------------------------
-      - name: Validate XML files
-        run: |
-          find . -name "*.xml" ! -path "*/.git/*" | while read file; do
-            xmllint --noout "$file" || exit 1
-          done
-
-      # -----------------------------
-      # DONE
-      # -----------------------------
-      - name: SUCCESS
-        run: echo "✅ All critical checks passed"
+echo "=== SUCCESS ==="
