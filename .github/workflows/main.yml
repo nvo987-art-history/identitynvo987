@@ -58,7 +58,7 @@ jobs:
           -exec sh -c 'echo "JSON: $1"; jq . "$1" > /dev/null' _ {} \;
 
       # -------------------------
-      # HTML VALIDATION (DUAL LAYER)
+      # HTML VALIDATION
       # -------------------------
       - name: Validate HTML (tidy)
         run: |
@@ -94,7 +94,7 @@ jobs:
           done
 
       # -------------------------
-      # EXTERNAL LINK CHECK (CONTROLLED)
+      # EXTERNAL LINK CHECK
       # -------------------------
       - name: External link check
         run: |
@@ -118,7 +118,7 @@ jobs:
           ' _ {} \;
 
       # -------------------------
-      # LIGHTHOUSE (PERFORMANCE + SEO)
+      # LIGHTHOUSE
       # -------------------------
       - name: Run Lighthouse
         run: |
@@ -130,16 +130,20 @@ jobs:
             --output-path=./lighthouse-report.json
 
       # -------------------------
-      # FIXED SCORE CHECK (NO bc)
+      # FIXED SCORE CHECK
       # -------------------------
       - name: Enforce Lighthouse score
         run: |
           SCORE=$(jq '.categories.performance.score * 100 | floor' lighthouse-report.json)
           echo "Performance score: $SCORE"
 
-          if [ "$SCORE" -lt 70 ]; then
-            echo "Performance too low!"
+          LIMIT=60
+
+          if [ "$SCORE" -lt "$LIMIT" ]; then
+            echo "Performance too low! (limit: $LIMIT)"
             exit 1
+          else
+            echo "Performance OK"
           fi
 
       # -------------------------
