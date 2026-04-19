@@ -1,1 +1,192 @@
+name: ENTERPRISE FULL REPO VALIDATOR (STRICT)
 
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+    # -------------------------
+    # CHECKOUT
+    # -------------------------
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    # -------------------------
+    # SYSTEM TOOLS
+    # -------------------------
+    - name: Install system tools
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y jq tidy curl bc coreutils grep findutils
+
+    # -------------------------
+    # NODE TOOLS
+    # -------------------------
+    - name: Install Node tools
+      run: |
+        npm install -g htmlhint
+
+    # -------------------------
+    # FAIL FAST MODE
+    # -------------------------
+    - name: Enable strict mode
+      run: |
+        set -euo pipefail
+
+    # -------------------------
+    # CRITICAL FILES
+    # -------------------------
+    - name: Check critical files
+      run: |
+        test -f index.html
+        test -f 404.html
+
+    # -------------------------
+    # EMPTY FILES = ERROR
+    # -------------------------
+    - name: Detect empty files
+      run: |
+        EMPTY=$(find . -type f ! -path "*/.git/*" -empty)
+        if [ -n "$EMPTY" ]; then
+          echo "$EMPTY"
+          exit 1
+        fi
+
+    # -------------------------
+    # INVALID FILENAMES
+    # -------------------------
+    - name: Check invalid filenames
+      run: |
+        find . -type f | grep -E '[[:space:]]' && exit 1 || true
+
+    # -------------------------
+    # JSON VALIDATION
+    # -------------------------
+    - name: Validate JSON & JSON-LD
+      run: |
+        find . -type f \( -name "*.json" -o -name "*.jsonld" \) ! -path "*/.git/*" | while read file; do
+          echo "Checking $file"
+          jq . "$file" > /dev/null
+        done
+
+    # -------------------------
+    # HTML VALIDATION (STRICT)
+    # -------------------------
+    - name: Validate HTML with tidy
+      run: |
+        find . -type f -name "*.html" ! -path "*/.git/*" | while read file; do
+          echo "Tidy check: $file"
+          tidy -errors -q "$file"
+        done
+
+    - name: Validate HTML with htmlhint
+      run: |
+        htmlhint "**/*.html"
+
+    # -------------------------
+    # REQUIRED META TAGS
+    # -------------------------
+    - name: Enforce required meta tags
+      run: |
+        find . -name "*.html" | while read file; do
+          grep -qi "<title>" "$file" || exit 1
+          grep -qi "meta name=\"viewport\"" "$file" || exit 1
+          grep -qi "meta name=\"description\"" "$file" || exit 1
+        done
+
+    # -------------------------
+    # LINK INTEGRITY (STRICT)
+    # -------------------------
+    - name: Validate internal links
+      run: |
+        grep -rhoP 'href="\K[^"]+' . | while read link; do
+          if [[ "$link" == /* ]]; then
+            [ -e ".$link" ] || (echo "Broken: $link" && exit 1)
+          fi
+        done
+
+    # -------------------------
+    # RELATIVE PATH VALIDATION
+    # -------------------------
+    - name: Validate relative paths
+      run: |
+        grep -rhoP 'href="\K(?!http)[^"]+' . | while read link; do
+          [[ "$link" == \#* ]] && continue
+          [[ "$link" == mailto:* ]] && continue
+          [[ "$link" == javascript:* ]] && continue
+          [ -e "$link" ] || (echo "Invalid relative path: $link" && exit 1)
+        done
+
+    # -------------------------
+    # DUPLICATE FILE CONTENT
+    # -------------------------
+    - name: Detect duplicate files
+      run: |
+        DUP=$(find . -type f ! -path "*/.git/*" -exec sha256sum {} + | sort | uniq -d)
+        if [ -n "$DUP" ]; then
+          echo "$DUP"
+          exit 1
+        fi
+
+    # -------------------------
+    # SECURITY (STRICT)
+    # -------------------------
+    - name: Security validation
+      run: |
+        # inline JS tiltás
+        if grep -r "<script>" .; then
+          echo "Inline JS detected"
+          exit 1
+        fi
+
+        # target=_blank rel nélkül tiltás
+        if grep -r 'target="_blank"' . | grep -v 'rel='; then
+          echo "Missing rel for target=_blank"
+          exit 1
+        fi
+
+    # -------------------------
+    # IMAGE VALIDATION
+    # -------------------------
+    - name: Image checks
+      run: |
+        grep -r "<img" . | grep -v "alt=" && exit 1 || true
+
+    # -------------------------
+    # WELL-KNOWN FILE STRUCTURE (DE NEM DOMAIN-FÜGGŐ)
+    # -------------------------
+    - name: Validate .well-known structure
+      run: |
+        if [ -d ".well-known" ]; then
+          find .well-known -type f | while read f; do
+            [ -s "$f" ] || exit 1
+          done
+        fi
+
+    # -------------------------
+    # XML VALIDATION
+    # -------------------------
+    - name: Validate XML files
+      run: |
+        find . -type f -name "*.xml" | while read file; do
+          xmllint --noout "$file"
+        done
+
+    # -------------------------
+    # FINAL
+    # -------------------------
+    - name: SUCCESS
+      run: echo "ALL VALIDATIONS PASSED (STRICT MODE)"
