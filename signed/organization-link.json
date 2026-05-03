@@ -6,26 +6,34 @@
   "id": "https://identity.nvo987.us/signed/organization-link.json",
   "type": "OrganizationLink",
   "issuer": "did:web:identity.nvo987.us",
-  "issued": "2026-03-21T00:00:00Z",
-
+  "issued": "2026-05-03T00:00:00Z",
   "organization": {
     "name": "NVO987 Culture Visuelle Moderne et Contemporaine",
+    "legalName": "NVO987 Culture Visuelle Moderne et Contemporaine",
+    "description": "Independent French cultural and visual arts organization focused on modern and contemporary visual culture, research, publishing, digital identity, and international artistic collaboration.",
     "website": "https://nvo987.fr",
-    "country": "France"
+    "email": "contact@nvo987.fr",
+    "president": "Nicholas Van-Orton",
+    "address": {
+      "streetAddress": "Paris Centre",
+      "addressLocality": "Paris",
+      "addressRegion": "Île-de-France",
+      "postalCode": "75008",
+      "addressCountry": "France"
+    }
   },
-
   "serviceReference": "did:web:identity.nvo987.us#organization-fr",
-
   "relationship": {
     "type": "official-affiliate",
-    "status": "active"
+    "status": "active",
+    "city": "Paris",
+    "country": "France"
   },
-
   "proof": {
-    "type": "Ed25519Signature2020",
-    "verificationMethod": "did:web:identity.nvo987.us#identity-key",
-    "created": "2026-03-21T00:00:00Z",
+    "type": "JsonWebSignature2020",
+    "created": "2026-05-03T00:00:00Z",
     "proofPurpose": "assertionMethod",
+    "verificationMethod": "did:web:identity.nvo987.us#key-1",
     "jws": ""
   }
 }
