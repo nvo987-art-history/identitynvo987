@@ -34,6 +34,6 @@
     "created": "2026-05-03T00:00:00Z",
     "proofPurpose": "assertionMethod",
     "verificationMethod": "did:web:identity.nvo987.us#key-1",
-    "jws": ""
+    "jws": "eyJhbGciOiJFZERTQSIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il19..EAQ5U0__ucsZ6xUKKU6Z0iOPCBm8OU8d0AJiwuyb_5qpngdG2M_-BmorZoUUCmYKVlD4JA9Vf_6BrDxmzG6Pdw"
   }
 }
