@@ -7,24 +7,23 @@
   "type": "IdentityStatement",
   "issuer": "did:web:identity.nvo987.us",
   "issued": "2026-03-21T00:00:00Z",
-
   "subject": {
     "id": "did:web:identity.nvo987.us",
     "domain": "identity.nvo987.us"
   },
-
   "services": [
     "https://identity.nvo987.us/profile",
     "https://identity.nvo987.us/documents",
     "https://identity.nvo987.us/signed",
     "https://identity.nvo987.us/verification"
   ],
-
   "proof": {
     "type": "Ed25519Signature2020",
     "verificationMethod": "did:web:identity.nvo987.us#identity-key",
     "created": "2026-03-26T00:00:00Z",
     "proofPurpose": "assertionMethod",
-    "jws": ""
+    "jws": "eyJhbGciOiJFZERTQSJ9.ewogICJAY29udGV4dCI6IFsKI...xkVKEAeEYv9q2dpkjnbPPpRK_b1Zqa1r-kmX4jp3roIVvluy9_sbp8Gwxoa2NVarjxcsIdBAJNoXJws8tHXvCDw"
   }
 }
+
+  
